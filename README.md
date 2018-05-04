@@ -12,3 +12,10 @@ Invite your bot to the server you wish to use.
 Get the token and put it where it says bot.token("")
 
 -On the initial release it's line 26
+
+
+Responder setup (initial release)
+
+-Create a new bot and add the token to line 24
+
+-Input the channel ID on line 14 and replace chanelid
