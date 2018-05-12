@@ -1,6 +1,4 @@
 #PyCord Viewer
-#this requires discord.py
-#Please change line 26 to your bot token
 print("Starting PyCord ")
 import discord
 import asyncio
@@ -15,7 +13,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-	print("[",message.author,"in",message.channel, "]",message.content)
+	print("[",message.author,"in",message.channel, "]",message.clean_content)
 
 
 
