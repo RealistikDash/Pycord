@@ -14,3 +14,6 @@ Setup:
 -Run 'pip install -r requirements.txt'
 
 -Edit both py files with your token.
+
+# Troubleshooting
+If the new responder gives you an error about local variables, enter '/channelid {your channel id}'
