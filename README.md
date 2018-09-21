@@ -1,21 +1,14 @@
 # PyCord
 Initial setup:
 
-Install discord.py
+Setup:
 
--On Windows, go to cmd and type in "pip install discord.py"
+-Create a bot on the Discord Developer Portal
 
-Create a bot on https://discordapp.com/developers/applications/me
+-Get a token
 
-Invite your bot to the server you wish to use.
+-Open cmd in the Pycord folder
 
-Get the token and put it where it says bot.token("")
+-Run 'pip install -r requirements.txt'
 
--On the initial release it's line 26
-
-
-Responder setup (initial release)
-
--Create a new bot and add the token to line 24
-
--Input the channel ID on line 14 and replace chanelid
+-Edit both py files with your token.
