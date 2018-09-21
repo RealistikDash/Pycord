@@ -1,21 +1,19 @@
 # PyCord
-Initial setup:
+Pycord is a simple Discord client created to bypass the restrictions on Discord by network owners.
 
-Install discord.py
+# Initial setup:
 
--On Windows, go to cmd and type in "pip install discord.py"
+Setup:
 
-Create a bot on https://discordapp.com/developers/applications/me
+-Create a bot on the Discord Developer Portal
 
-Invite your bot to the server you wish to use.
+-Get a token
 
-Get the token and put it where it says bot.token("")
+-Open cmd in the Pycord folder
 
--On the initial release it's line 26
+-Run 'pip install -r requirements.txt'
 
+-Edit both py files with your token.
 
-Responder setup (initial release)
-
--Create a new bot and add the token to line 24
-
--Input the channel ID on line 14 and replace chanelid
+# Troubleshooting
+If the new responder gives you an error about local variables, enter '/channelid {your channel id}'
