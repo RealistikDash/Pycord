@@ -1,5 +1,7 @@
 # PyCord
-Initial setup:
+Pycord is a simple Discord client created to bypass the restrictions on Discord by network owners.
+
+# Initial setup:
 
 Setup:
 
