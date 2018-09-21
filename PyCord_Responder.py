@@ -48,7 +48,7 @@ async def on_ready():
 			msg = input("Pycord> ")
 			#Checks if the msg is empty
 			if msg == "":
-				print("Please write a message! Empty messages cannot be sent!")
+				print("[Pycord Error] Cannot send empty message.")
 			#Changes the presence
 			elif msg.startswith("/setgame"):
 				game = msg[9:]
