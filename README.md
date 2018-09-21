@@ -16,4 +16,4 @@ Setup:
 -Edit both py files with your token.
 
 # Troubleshooting
-If the new responder gives you an error about local variables, enter '/channelid {your channel id}'
+If the new responder gives you an error about local variables, enter '/changeid {your channel id}'
