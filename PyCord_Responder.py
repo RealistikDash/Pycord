@@ -53,27 +53,29 @@ async def on_ready():
 			elif msg.startswith("/setgame"):
 				game = msg[9:]
 				await bot.change_presence(game=discord.Game(name=game))
-				print("Game set to " + msg[9:])
+				print("[Pycord Info] Game set to " + msg[9:])
 			#Send file command (Use: /sendfile file.png), all formats supported as long as it is under 8MB
 			elif msg.startswith("/sendfile"):
-				print("Sending file...")
+				print("[Pycord Info] Sending file...")
 				await bot.send_file(discord.Object(id=channelId), msg[10:])
 			#Lets the user set the parameters for the send
 			elif msg.startswith("/customsend"):
-				print("Attempting custom send...")
+				print("[Pycord Info] Attempting custom send...")
 				eval("""await bot.send_message(""" + msg[12:] + ")")
 			#Changes pycord username
 			elif msg.startswith("/changeuser"):
 				username = msg[12:]
-				print("Username changed to " + username)
+				print("[Pycord Info] Username changed to " + username)
 			#Import custom modules for use with /customsend
 			elif msg.startswith("/python.import"):
 				eval("import " + msg[15:])
-				print("Import attempted. Successful unless given an error.")
+				print("[Pycord Info] Import attempted. Successful unless given an error.")
 			#Opens a text file and says it's contents in discord
 			elif msg.startswith("/sendtxt"):
 				file = open(msg[9:], 'r')
-				await bot.send_message(discord.Object(id=channelId), file.read())
+				print("[Pycord Info] Sending txt file...")
+				await bot.send_message(discord.Object(id=channelId), "`[" + username + """]` TXT FILE 
+""" + file.read())
 			#Change channel ID
 			elif msg.startswith("/changeid"):
 				channelId = msg[10:]
