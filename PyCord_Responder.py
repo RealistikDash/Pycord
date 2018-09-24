@@ -80,6 +80,9 @@ async def on_ready():
 			#Change channel ID
 			elif msg.startswith("/changeid"):
 				channelId = msg[10:]
+			#Lists all the commands
+			elif msg.startswith("/help"):
+				print(cmdlist)
 			#If none of the requirements above are met, send the message
 			else:
 				await bot.send_message(discord.Object(id=channelId), "`[{}]` {}".format(username, msg))
