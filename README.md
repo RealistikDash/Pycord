@@ -26,6 +26,7 @@ The currently available commands are:
 
 | Command | Description |
 | --- | --- |
+| /help | Lists all the available commands. |
 | /setgame | Sets your presence to a given input. |
 | /sendfile | Sends a file with a given name. |
 | /customsend | Lets you choose the variables such as the channel id, message and any other attributes. |
