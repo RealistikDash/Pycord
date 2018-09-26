@@ -34,3 +34,7 @@ The currently available commands are:
 | /sendtxt | Sends the contents of a specified txt file. (2000 characters max) |
 | /changeid | Changes the channel id to which your messages are being sent to. |
 | /exit | Logs off and exits Pycord |
+
+# Pycord Viewer Focus Mode
+
+Focus mode docuses on one channel and ignores the others. To enable it, set focusmode variable to 1 (keep it an int) and input a channel id (as a str). It all has a dedicated, commented section in the code so they are easy to find.
