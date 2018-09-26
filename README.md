@@ -41,3 +41,7 @@ The currently available commands are:
 # Pycord Viewer Focus Mode
 
 Focus mode docuses on one channel and ignores the others. To enable it, set focusmode variable to 1 (keep it an int) and input a channel id (as a str). It all has a dedicated, commented section in the code so they are easy to find.
+
+Here is an example (every channel has a different ID):
+
+![alt text](http://realistikdash.com/img/focusExample.PNG)
