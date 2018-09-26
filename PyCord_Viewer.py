@@ -13,9 +13,9 @@ Pycord Viewer has succesfully logged into {}!
 ---------------------------------------------------------------------"""
 ######################################
 
-#Focus channel (only recieve messages form a certain channel, set focuschannel to 0 to switch it off)
-focusonchannel = 1
-channelId = ''
+#Focus channel (only recieve messages form a certain channel)
+focusonchannel = 0 #1 = on, 0 = off
+channelId = '' #id of the channel to focus on
 
 #Bot Setup (setup your bot with a token)
 botToken = ''
