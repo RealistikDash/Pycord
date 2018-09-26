@@ -6,6 +6,7 @@ print("Initialising Pycord Responder")
 import discord
 import asyncio
 import random
+from Pycord import *
 ######################################
 
 #Bot Values (without editing them Pycord won't work)
@@ -43,7 +44,7 @@ bot = discord.Client()
 
 @bot.event
 async def on_ready():
-		print("[Pycord Info] Logged into", bot.user.name)
+		pycord.log("Logged into {}".format(bot.user.name))
 		username = input("[Pycord] Enter a username: ")
 		await bot.change_presence(game=discord.Game(name=username + " is using Pycord"))
 		#Welcome message
@@ -58,38 +59,38 @@ async def on_ready():
 			msg = input("Pycord> ")
 			#Checks if the msg is empty
 			if msg == "":
-				print("[Pycord Error] Cannot send empty message.")
+				pycord.errorLog("Cannot send empty message.")
 
 			#Changes the presence
 			elif msg.startswith("/setgame"):
 				game = msg[9:]
 				await bot.change_presence(game=discord.Game(name=game))
-				print("[Pycord Info] Game set to {}".format(msg[9:]))
+				pycord.log("Game set to {}".format(msg[9:]))
 
 			#Send file command (Use: /sendfile file.png), all formats supported as long as it is under 8MB
 			elif msg.startswith("/sendfile"):
-				print("[Pycord Info] Sending file {}...".format(msg[10:]))
+				pycord.log("Sending file {}...".format(msg[10:]))
 				await bot.send_file(discord.Object(id=channelId), msg[10:])
 
 			#Lets the user set the parameters for the send
 			elif msg.startswith("/customsend"):
-				print("[Pycord Info] Attempting custom send...")
+				pycord.log("Attempting custom send...")
 				eval("""await bot.send_message({})""".format(msg[12:]))
 
 			#Changes pycord username
 			elif msg.startswith("/changeuser"):
 				username = msg[12:]
-				print("[Pycord Info] Username changed to {}".format(username))
+				pycord.log("Username changed to {}".format(username))
 
 			#Import custom modules for use with /customsend
 			elif msg.startswith("/python.import"):
 				eval("import {}".format(msg[15:]))
-				print("[Pycord Info] Import attempted. Successful unless given an error.")
+				pycord.log("Import attempted. Successful unless given an error.")
 
 			#Opens a text file and says it's contents in discord
 			elif msg.startswith("/sendtxt"):
 				file = open(msg[9:], 'r')
-				print("[Pycord Info] Sending txt file...")
+				pycord.log("Sending txt file...")
 				await bot.send_message(discord.Object(id=channelId), """`[{}]` TXT FILE 
 """.format(username) + file.read())
 			
@@ -115,6 +116,8 @@ async def on_ready():
 			#If none of the requirements above are met, send the message
 			else:
 				await bot.send_message(discord.Object(id=channelId), "`[{}]` {}".format(username, msg))
+		
+		pycord.log("Loop broken")
 
 
 bot.run(botToken) #Connects the bot.
