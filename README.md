@@ -15,6 +15,8 @@ Setup:
 
 -Edit both py files with your token.
 
+![alt text](http://realistikdash.com/img/pycordToken.PNG)
+
 # Troubleshooting
 If the new responder gives you an error about local variables, enter '/changeid {your channel id}'
 
