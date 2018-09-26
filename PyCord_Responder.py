@@ -14,15 +14,23 @@ botToken = "" #bot token
 ######################################
 
 
-#Commands List
+#Message list
 cmdlist="""The currently available commands are:
 Discord Based Commands
 -/setgame		Sets your presence to a given input.
 -/sendfile		Sends a file with a given name.
--/customsend	Lets you choose the variables such as the channel id, message and any other attributes.
--/changeuser	Changes your Pycord username.
+-/customsend		Lets you choose the variables such as the channel id, message and any other attributes.
+-/changeuser		Changes your Pycord username.
 -/sendtxt		Sends the contents of a specified txt file.
--/changeid		Changes the channel id to which your messages are being sent to."""
+-/changeid		Changes the channel id to which your messages are being sent to.
+-/exit			Exits Pycord"""
+
+
+exitMsg = """---------------------------------------------------------------------
+Thank you for using Pycord!
+Make sure to report any issues on GitHub.
+The program will turn off in 3 seconds
+---------------------------------------------------------------------"""
 ######################################
 
 #Tips
@@ -83,6 +91,12 @@ async def on_ready():
 			#Lists all the commands
 			elif msg.startswith("/help"):
 				print(cmdlist)
+			#Exits PyCord
+			elif msg.startswith("/exit"):
+				print(exitMsg)
+				time.sleep(3)
+				await bot.close()
+				break
 			#If none of the requirements above are met, send the message
 			else:
 				await bot.send_message(discord.Object(id=channelId), "`[{}]` {}".format(username, msg))
