@@ -1,6 +1,14 @@
 # PyCord
 Pycord is a simple Discord client created to bypass the restrictions on Discord by network owners.
 
+# Tested Python Versions
+
+Here is a list of tested Python versions.
+
+3.6.5 - works with no issues
+
+3.6.1 - works with no issues
+
 # Initial setup:
 
 Setup:
