@@ -6,7 +6,8 @@ print("Initialising Pycord Responder")
 import discord
 import asyncio
 import random
-from Pycord import *
+import time
+from Pycord import pycord
 ######################################
 
 #Bot Values (without editing them Pycord won't work)
@@ -25,6 +26,7 @@ Discord Based Commands
 -/sendtxt		Sends the contents of a specified txt file.
 -/changeid		Changes the channel id to which your messages are being sent to.
 -/shrug			Sends a ¯\_(ツ)_/¯
+-/ping			Measures the speed of your connection to discord (lower is better)
 -/exit			Exits Pycord"""
 
 
@@ -112,6 +114,15 @@ async def on_ready():
 			#Sends the shrug emote
 			elif msg.startswith("/shrug"):
 				await bot.send_message(discord.Object(id=channelId), "`[{}]` ¯\_(ツ)_/¯".format(username))
+			
+			#A ping command
+			elif msg.startswith("/ping"):
+				t1 = time.time()
+				await bot.send_typing(discord.Object(id=channelId))
+				t2 = time.time()
+				ping = (t2-t1)*1000
+				ping = round(ping, 2)
+				pycord.log("Your ping is {}ms".format(ping))
 
 			#If none of the requirements above are met, send the message
 			else:
