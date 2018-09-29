@@ -9,6 +9,8 @@ Here is a list of tested Python versions.
 
 3.6.1 - works with no issues
 
+2.7.10 - aiohttp requires 3.4.2 or higher
+
 # Initial setup:
 
 Setup:
