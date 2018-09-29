@@ -46,6 +46,7 @@ The currently available commands are:
 | /sendtxt | Sends the contents of a specified txt file. (2000 characters max) |
 | /changeid | Changes the channel id to which your messages are being sent to. |
 | /shrug | Sends a ¯\_(ツ)_/¯ |
+| /ping | Checks your connection to discord in ms (lower is better) |
 | /exit | Logs off and exits Pycord |
 
 # Pycord Viewer Focus Mode
