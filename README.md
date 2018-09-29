@@ -28,6 +28,8 @@ Setup:
 # Troubleshooting
 If the new responder gives you an error about local variables, enter '/changeid {your channel id}'
 
+If you having an issue connecting, this could mean a few things. Firstly, it can mean you misentered the token. It can also mean you are entering an account from a new location and you need to verify the location via email. Lastly, it can mean the Discord API is blocked too. This can be solved by using a site like repl.it or a VPS to run Pycord.
+
 # Pycord Resonder Commands
 
 The responder has it's own commands to save you time coding them in. 
