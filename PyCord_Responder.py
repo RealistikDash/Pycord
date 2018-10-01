@@ -13,6 +13,7 @@ from Pycord import pycord
 #Bot Values (without editing them Pycord won't work)
 channelId = "" #channel id check thing
 botToken = "" #bot token
+weatherApiKey = "" #your open weather api key
 ######################################
 
 
@@ -123,6 +124,15 @@ async def on_ready():
 				ping = (t2-t1)*1000
 				ping = round(ping, 2)
 				pycord.log("Your ping is {}ms".format(ping))
+				
+			#The useless weather command idfk
+			elif msg.startswith("/weather"):
+				if msg[9:].startswith("share"):
+					print("placeholder")
+				if msg[9:].startswith("get"):
+					print("placeholder")
+				else:
+					pycord.log("Invalid subcommand {}".format(msg[9:]))
 
 			#If none of the requirements above are met, send the message
 			else:
