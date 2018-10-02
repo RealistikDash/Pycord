@@ -1,4 +1,6 @@
 # PyCord
+This branch is almost ready. Just needs tweaks/is unfinished. This code has a chance of working but who knows...
+
 Pycord is a simple Discord client created to bypass the restrictions on Discord by network owners.
 
 # Tested Python Versions
@@ -19,9 +21,7 @@ Setup:
 
 -Get a token
 
--Open cmd in the Pycord folder
-
--Run 'pip install -r requirements.txt'
+-Run setup.py
 
 -Edit both py files with your token.
 
