@@ -8,14 +8,8 @@ import asyncio
 import random
 import time
 from Pycord import pycord
+from settings import * #Imports variables you set in the setup
 ######################################
-
-#Bot Values (without editing them Pycord won't work)
-channelId = "" #channel id check thing
-botToken = "" #bot token
-weatherApiKey = "" #your open weather api key
-######################################
-
 
 #Message list
 cmdlist="""The currently available commands are:
