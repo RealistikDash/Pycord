@@ -23,6 +23,25 @@ if x == "y":
   import requests
   import aiohttp
   pycord.log("Done!")
+  pycord.log("Setting up bot.")
+  botToken = input("Enter the bot token you wish to use: ")
+  botChannelId = input("What channel shall the messages be sent to (channel id): ")
+  focusModeOnQ = input("Do you want to enable Focus Mode (for viewer)? Y/n ")
+  if focusModeOnQ == "n":
+    focusModeEnabled = 0
+  else:
+    focusModeEnabled = 1
+  file = open("settings.py","w+") #creates a file called settings.py that will store all your variables
+  
+  settingsFile = """#These are the bot settings for Pycord. This script is not to be ran. Pycord will just read it and get the variables from here
+botToken = {}
+channelId = {}
+focusonchannel = {}
+  """.format(botToken, botChannelId, focusModeEnabled)
+  
+  pycord.log("Attempting to write settings to file...")
+  file.write(settingsFile)
+  pycord.log("Done!")
   pycord.log("Setup complete!")
   print("-----------------------------------------")
   print("The Pycord setup was completed!")
