@@ -34,13 +34,14 @@ if x == "y":
   file = open("settings.py","w+") #creates a file called settings.py that will store all your variables
   
   settingsFile = """#These are the bot settings for Pycord. This script is not to be ran. Pycord will just read it and get the variables from here
-botToken = {}
-channelId = {}
+botToken = "{}"
+channelId = "{}"
 focusonchannel = {}
   """.format(botToken, botChannelId, focusModeEnabled)
   
   pycord.log("Attempting to write settings to file...")
   file.write(settingsFile)
+  file.close()
   pycord.log("Done!")
   pycord.log("Setup complete!")
   print("-----------------------------------------")
