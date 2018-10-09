@@ -1,4 +1,5 @@
 # PyCord
+
 Pycord is a simple Discord client created to bypass the restrictions on Discord by network owners.
 
 # Tested Python Versions
@@ -19,13 +20,9 @@ Setup:
 
 -Get a token
 
--Open cmd in the Pycord folder
+-Run setup.py. It will setup everything for you. All you will need to do is enter the channel id, bot token and if you want to use focus mode.
 
--Run 'pip install -r requirements.txt'
-
--Edit both py files with your token.
-
-![alt text](http://realistikdash.com/img/pycordToken.PNG)
+-Enjoy
 
 # Troubleshooting
 If the new responder gives you an error about local variables, enter '/changeid {your channel id}'
