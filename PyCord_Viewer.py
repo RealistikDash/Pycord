@@ -4,6 +4,7 @@ print("Initialising Pycord Viewer")
 #Required imports
 import discord
 import asyncio
+from settings import * #Imports variables you set in the setup
 ######################################
 
 #Welcome message
@@ -11,14 +12,6 @@ welcome= """--------------------------------------------------------------------
 Welcome to Pycord Viewer
 Pycord Viewer has succesfully logged into {}!
 ---------------------------------------------------------------------"""
-######################################
-
-#Focus channel (only recieve messages form a certain channel)
-focusonchannel = 0 #1 = on, 0 = off
-channelId = '' #id of the channel to focus on
-
-#Bot Setup (setup your bot with a token)
-botToken = ''
 ######################################
 
 bot = discord.Client()
