@@ -53,6 +53,7 @@ async def on_ready():
 		######################################
 
 		while True : #The main loop
+			from settings import * #Temporary variable fix
 			msg = input("Pycord> ")
 			#Checks if the msg is empty
 			if msg == "":
