@@ -42,7 +42,6 @@ bot = discord.Client()
 @bot.event
 async def on_ready():
 		pycord.log("Logged into {}".format(bot.user.name))
-		username = input("[Pycord] Enter a username: ")
 		await bot.change_presence(game=discord.Game(name=username + " is using Pycord"))
 		#Welcome message
 		print("Welcome to Pycord {}!".format(username))
