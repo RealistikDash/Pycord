@@ -7,7 +7,7 @@ import time
 
 
 #Welcome
-print("-----------------------------------------")
+print"-----------------------------------------")
 print("Welcome to the Pycord setup.")
 print("-----------------------------------------")
 print("")
@@ -31,17 +31,19 @@ if x == "y":
     focusModeEnabled = 0
   else:
     focusModeEnabled = 1
+  username = input("Enter your Pycord Responder username: ")
   file = open("settings.py","w+") #creates a file called settings.py that will store all your variables
   
   settingsFile = """#These are the bot settings for Pycord. This script is not to be ran. Pycord will just read it and get the variables from here
 botToken = "{}"
 channelId = "{}"
 focusonchannel = {}
-  """.format(botToken, botChannelId, focusModeEnabled)
+username = "{}"
+  """.format(botToken, botChannelId, focusModeEnabled, username)
   
   pycord.log("Attempting to write settings to file...")
-  file.write(settingsFile)
-  file.close()
+  file.write(settingsFile) #writes to the file
+  file.close() #applies the edits
   pycord.log("Done!")
   pycord.log("Setup complete!")
   print("-----------------------------------------")
