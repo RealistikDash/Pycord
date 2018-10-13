@@ -57,6 +57,10 @@ username = "{}"
       exit()
     file.close() #closes the file and applies changes
     
+    pycord.log("Install successful! Closing...")
+    time.sleep(3)
+    exit()
+    
     
     
     
