@@ -52,6 +52,21 @@ async def on_ready():
 		######################################
 
 		while True : #The main loop
+			###MISSING VARIABLE CHECK###
+			try:
+				channelId = channelId
+			
+			except Exception:
+				pycord.errorLog("Error loading channel id from file...")
+				channelId = input("Please enter the channel id: ")
+			
+			try:
+				username = username
+				
+			except Exception:
+				pycord.errorLog("Error getting username from settings.py...")
+				username = input("Enter your username: ")
+			
 			msg = input("Pycord> ")
 			#Checks if the msg is empty
 			if msg == "":
@@ -145,5 +160,7 @@ async def on_ready():
 		
 		pycord.log("Loop broken")
 
-
-bot.run(botToken) #Connects the bot.
+try:
+	bot.run(botToken) #Connects the bot.
+except Exception:
+	pycord.errorLog("Could not connect to Discord. Check your token. Login aborted.")
