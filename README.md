@@ -29,9 +29,11 @@ Setup:
 While you can edit it using a text editor, you can also use setup.py and it's new editor because why not?
 
 # Troubleshooting
+The responder has been equipped with error handling. However, if that still doesn't fix it, try these steps.
+
 If the new responder gives you an error about local variables, enter '/changeid {your channel id}'
 
-If you having an issue connecting, this could mean a few things. Firstly, it can mean you misentered the token. It can also mean you are entering an account from a new location and you need to verify the location via email. Lastly, it can mean the Discord API is blocked too. This can be solved by using a site like repl.it or a VPS to run Pycord.
+If you having an issue connecting, this could mean a few things. Firstly, it can mean you misentered the token. It can also mean you are entering an account from a new location and you need to verify the location via email. Lastly, it can mean the Discord API is blocked too. This can be solved by using a site like repl.it or a VPS to run Pycord. A VPN should also be fine.
 
 # Pycord Resonder Commands
 
