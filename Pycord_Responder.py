@@ -3,12 +3,32 @@
 print("Initialising Pycord Responder")
 
 #All the necessary imports
-import discord
-import asyncio
-import random
-import time
-from Pycord import pycord
-from settings import * #Imports variables you set in the setup
+try: #Attempts to import
+	import discord
+	import asyncio
+	import random
+	import time
+	from Pycord import pycord
+	import os
+	from settings import * #Imports variables you set in the setup
+	
+except ImportError: #This is run if there is an error while importing
+	pycord.errorLog("There was an error while importing! Pycord cannot continue. Make sure you ran setup.py before launching Pycord")
+	print("")
+	runSetup = input("Do you want to run the setup now? (y/N)")
+	runSetup = runSetup.lower() #Turns runSetup into lower case letters
+	
+	if runSetup == "y":
+		try:
+			os.system("python setup.py")
+			exit()
+		except Exception: #In case the system uses "python3" for it's commands, that will happen
+			os.system("python3 setup.py")
+			exit()
+		else:
+			pycord.errorLog("There was an error while attempting to run the setup. Pycord cannot proceed.")
+			time.sleep(3)
+			exit()
 ######################################
 
 #Message list
