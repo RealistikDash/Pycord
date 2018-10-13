@@ -43,29 +43,47 @@ bot = discord.Client()
 async def on_ready():
 		pycord.log("Logged into {}".format(bot.user.name))
 		await bot.change_presence(game=discord.Game(name=username + " is using Pycord"))
+		
+		###MISSING VARIABLE CHECK###
+		try:
+			channelId = channelId
+			
+		except Exception:
+			pycord.errorLog("Error loading channel id from file...")
+			channelId = input("Please enter the channel id: ")
+			
+		try:
+			username = username
+				
+		except Exception:
+			pycord.errorLog("Error getting username from settings.py...")
+			username = input("Enter your username: ")
+		#####################################
+		
+		#Checks ping
+		t1 = time.time()
+		await bot.send_typing(discord.Object(id=channelId))
+		t2 = time.time()
+		ping = (t2-t1)*1000
+		ping = round(ping, 2)
+		######################################
+		
 		#Welcome message
 		print("Welcome to Pycord {}!".format(username))
 		print(cmdlist)
 		print("---------------------------------------------------------------------")
+		print("Connection info:")
+		print("Logged into: {}".format(bot.user.name))
+		print("Your ping is: {}".format(ping))
+		print("---------------------------------------------------------------------")
 		print(random.choice(tips))
 		print("---------------------------------------------------------------------")
 		######################################
+		
+		await bot.send_message(discord.Object(id=channelId), "**{}** logged into Pycord.".format(username))
 
 		while True : #The main loop
-			###MISSING VARIABLE CHECK###
-			try:
-				channelId = channelId
 			
-			except Exception:
-				pycord.errorLog("Error loading channel id from file...")
-				channelId = input("Please enter the channel id: ")
-			
-			try:
-				username = username
-				
-			except Exception:
-				pycord.errorLog("Error getting username from settings.py...")
-				username = input("Enter your username: ")
 			
 			msg = input("Pycord> ")
 			#Checks if the msg is empty
