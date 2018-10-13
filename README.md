@@ -24,6 +24,10 @@ Setup:
 
 -Enjoy
 
+# Editing settings.py
+
+While you can edit it using a text editor, you can also use setup.py and it's new editor because why not?
+
 # Troubleshooting
 If the new responder gives you an error about local variables, enter '/changeid {your channel id}'
 
