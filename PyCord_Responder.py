@@ -66,7 +66,11 @@ async def on_ready():
 			#Send file command (Use: /sendfile file.png), all formats supported as long as it is under 8MB
 			elif msg.startswith("/sendfile"):
 				pycord.log("Sending file {}...".format(msg[10:]))
-				await bot.send_file(discord.Object(id=channelId), msg[10:])
+				try:
+					await bot.send_file(discord.Object(id=channelId), msg[10:])
+				
+				except Exception:
+					pycord.errorLog("An error occured while sending the file...")
 
 			#Lets the user set the parameters for the send
 			elif msg.startswith("/customsend"):
@@ -85,10 +89,16 @@ async def on_ready():
 
 			#Opens a text file and says it's contents in discord
 			elif msg.startswith("/sendtxt"):
-				file = open(msg[9:], 'r')
-				pycord.log("Sending txt file...")
-				await bot.send_message(discord.Object(id=channelId), """`[{}]` TXT FILE 
+				try:
+					file = open(msg[9:], 'r')
+					pycord.log("Sending txt file...")
+					try:
+						await bot.send_message(discord.Object(id=channelId), """`[{}]` TXT FILE 
 """.format(username) + file.read())
+					except Exception:
+						pycord.errorLog("An error occured while sending the message...")
+				except Exception:
+					pycord.errorLog("An error occured opening the file...")
 			
 			#Change channel ID
 			elif msg.startswith("/changeid"):
@@ -107,20 +117,31 @@ async def on_ready():
 			
 			#Sends the shrug emote
 			elif msg.startswith("/shrug"):
-				await bot.send_message(discord.Object(id=channelId), "`[{}]` ¯\_(ツ)_/¯".format(username))
+				try:
+					await bot.send_message(discord.Object(id=channelId), "`[{}]` ¯\_(ツ)_/¯".format(username))
+				except Exception:
+					pycord.errorLog("An error occured while sending the message...")
 			
 			#A ping command
 			elif msg.startswith("/ping"):
-				t1 = time.time()
-				await bot.send_typing(discord.Object(id=channelId))
-				t2 = time.time()
-				ping = (t2-t1)*1000
-				ping = round(ping, 2)
-				pycord.log("Your ping is {}ms".format(ping))
+				try:
+					t1 = time.time()
+					await bot.send_typing(discord.Object(id=channelId))
+					t2 = time.time()
+					ping = (t2-t1)*1000
+					ping = round(ping, 2)
+					pycord.log("Your ping is {}ms".format(ping))
+					
+				except Exception:
+					pycord.errorLog("An error occured while sending the message...")
+					
 
 			#If none of the requirements above are met, send the message
 			else:
-				await bot.send_message(discord.Object(id=channelId), "`[{}]` {}".format(username, msg))
+				try:
+					await bot.send_message(discord.Object(id=channelId), "`[{}]` {}".format(username, msg))
+				except Exception:
+					pycord.errorLog("An error occured while sending the message...")
 		
 		pycord.log("Loop broken")
 
