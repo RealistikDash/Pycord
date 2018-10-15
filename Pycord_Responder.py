@@ -166,6 +166,7 @@ async def on_ready():
 			elif msg.startswith("/exit"):
 				print(exitMsg)
 				time.sleep(3)
+				await bot.send_message(discord.Object(id=channelId), "**{}** logged out of Pycord.".format(username))
 				await bot.close() #Logs out
 				break #Breaks the loop
 			
