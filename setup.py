@@ -105,7 +105,6 @@ except ImportError: #except when you don't have it
       exit()
     import requests
     import aiohttp
-    import pillow
     ################
     
     pycord.log("Done!")
