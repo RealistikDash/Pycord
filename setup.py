@@ -57,7 +57,7 @@ username = "{}"
       exit()
     file.close() #closes the file and applies changes
     
-    pycord.log("Install successful! Closing...")
+    pycord.log("Edit successful! Closing...")
     time.sleep(3)
     exit()
     
@@ -103,7 +103,11 @@ except ImportError: #except when you don't have it
       pycord.errorLog("Failed to import discord! Try re-running the setup.")
       time.sleep(3)
       exit()
-    import requests
+      
+    try:
+      import requests
+    except ImportError:
+      pycord.errorLog("A non-fatal (for now) error occured. Failed to import requests!")
     import aiohttp
     ################
     
@@ -111,6 +115,7 @@ except ImportError: #except when you don't have it
     pycord.log("Setting up bot.")
     botToken = input("Enter the bot token you wish to use: ")
     botChannelId = input("What channel shall the messages be sent to (channel id): ")
+    checkForInt(botChannelId)
     focusModeOnQ = input("Do you want to enable Focus Mode (for viewer)? Y/n ")
     if focusModeOnQ == "n":
       focusModeEnabled = 0
