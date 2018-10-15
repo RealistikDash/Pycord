@@ -61,7 +61,6 @@ bot = discord.Client()
 
 @bot.event
 async def on_ready():
-		pycord.log("Logged into {}".format(bot.user.name))
 		await bot.change_presence(game=discord.Game(name=username + " is using Pycord"))
 		
 		###MISSING VARIABLE CHECK###
@@ -87,6 +86,8 @@ async def on_ready():
 		ping = (t2-t1)*1000
 		ping = round(ping, 2)
 		######################################
+		
+		pycord.log("Logged into {}".format(bot.user.name)) #Sets game
 		
 		#Welcome message
 		print("Welcome to Pycord {}!".format(username))
