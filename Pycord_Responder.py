@@ -203,3 +203,5 @@ try:
 	bot.run(botToken) #Connects the bot.
 except Exception:
 	pycord.errorLog("Could not connect to Discord. Check your token. Login aborted.")
+	time.sleep(3)
+	exit()
