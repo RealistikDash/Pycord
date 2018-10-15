@@ -23,12 +23,13 @@ except ImportError: #This is run if there is an error while importing
 			os.system("python setup.py")
 			exit()
 		except Exception: #In case the system uses "python3" for it's commands, that will happen
-			os.system("python3 setup.py")
-			exit()
-		else:
-			pycord.errorLog("There was an error while attempting to run the setup. Pycord cannot proceed.")
-			time.sleep(3)
-			exit()
+			try:
+				os.system("python3 setup.py")
+				exit()
+			except Exception:
+				pycord.errorLog("There was an error while attempting to run the setup. Pycord cannot proceed.")
+				time.sleep(3)
+				exit()
 ######################################
 
 #Message list
