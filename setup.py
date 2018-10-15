@@ -1,6 +1,7 @@
 #Pycord Setup
 #Imports
 from Pycord import moduleManagement as mm
+mm.installModule("colorama")
 from Pycord import pycord
 import time
 ###########################################
@@ -109,6 +110,11 @@ except ImportError: #except when you don't have it
     except ImportError:
       pycord.errorLog("A non-fatal (for now) error occured. Failed to import requests!")
     import aiohttp
+    try:
+      from colorama import Fore, Back, Style
+      from colorama import init
+    except ImportError:
+      
     ################
     
     pycord.log("Done!")
