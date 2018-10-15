@@ -62,7 +62,6 @@ bot = discord.Client()
 
 @bot.event
 async def on_ready():
-		await bot.change_presence(game=discord.Game(name=username + " is using Pycord"))
 		
 		###MISSING VARIABLE CHECK###
 		try:
