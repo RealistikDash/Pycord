@@ -1,7 +1,7 @@
 #Pycord Setup
 #Imports
 from Pycord import moduleManagement as mm
-mm.installModule("colorama")
+mm.installModule("colorama") # gets colorama for the pycord module
 from Pycord import pycord
 import time
 ###########################################
@@ -114,6 +114,7 @@ except ImportError: #except when you don't have it
       from colorama import Fore, Back, Style
       from colorama import init
     except ImportError:
+      pass
       
     ################
     
