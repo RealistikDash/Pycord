@@ -1,8 +1,17 @@
 #Pycord Setup
 #Imports
 from Pycord import moduleManagement as mm
-mm.installModule("colorama") # gets colorama for the pycord module
-from Pycord import pycord
+try:
+  from Pycord import pycord
+except ImportError:
+  mm.installModule("colorama") # gets colorama for the pycord module
+  try:
+    from Pycord import pycord
+  except ImportError:
+    print("Could not import the Pycord module. Closing...")
+    time.sleep(3)
+    exit()
+    
 import time
 ###########################################
 
