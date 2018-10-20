@@ -3,6 +3,11 @@
 print("Initialising Pycord Responder")
 
 #All the necessary imports
+try:
+	from Pycord import pycord
+except ImportError:
+	print("Could not import the Pycord module! Cannot continue!")
+	exit()
 try: #Attempts to import
 	import discord
 	import asyncio
@@ -65,18 +70,34 @@ async def on_ready():
 		
 		###MISSING VARIABLE CHECK###
 		try:
-			channelId = channelId
+			channelId = channelId #checks if the variable can be accessed
 			
 		except Exception:
+			errorForId = 1
 			pycord.errorLog("Error loading channel id from file...")
-			channelId = input("Please enter the channel id: ")
+			while errorForId == 1: #A loop that is run while the user is entering their new channel id
+				channelId = input("Please enter the channel id: ")
+				if pycord.checkNumber(channelId) == false: #checknumber returns true if it is a number and false if it itn't
+					pycord.errorLog("Invalid channel id!")
+				else:
+					errorForId = 0
+					break
 			
 		try:
-			username = username
+			username = username #checks if the variable can be accessed
 				
 		except Exception:
 			pycord.errorLog("Error getting username from settings.py...")
-			username = input("Enter your username: ")
+			usernameLoop = 1
+			while usernameLoop == 1: #cheks for invalid usernames
+				username = input("Enter your username: ")
+				if username == "":
+					pycord.errorLog("Invalid username!")
+				if username == " ":
+					pycord.errorLog("Invalid username!")
+				else:
+					usernameLoop = 0
+					break
 		#####################################
 		
 		#Checks ping
@@ -156,7 +177,12 @@ async def on_ready():
 			
 			#Change channel ID
 			elif msg.startswith("/changeid"):
-				channelId = msg[10:]
+				channelIdNew = msg[10:]
+				if pycord.checkNumber(channelIdNew) == false: #Checks if channelIdNew is a number or not. If it fails, the below is executed.
+					pycord.errorLog("Could not change the id. Failed checkNumber check.")
+				else:
+					channelId = channelIdNew
+					pycord.log("Channel Id changed to {}".format(channelId))
 
 			#Lists all the commands
 			elif msg.startswith("/help"):
