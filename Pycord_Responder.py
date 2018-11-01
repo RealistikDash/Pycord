@@ -98,11 +98,14 @@ async def on_ready():
 				else:
 					usernameLoop = 0
 					break
+					
+		channelId = discord.Object(id=channelId) #Makes the variable a discord object
+		
 		#####################################
 		
 		#Checks ping
 		t1 = time.time()
-		await bot.send_typing(discord.Object(id=channelId))
+		await bot.send_typing(channelId)
 		t2 = time.time()
 		ping = (t2-t1)*1000
 		ping = round(ping, 2)
@@ -142,7 +145,7 @@ async def on_ready():
 			elif msg.startswith("/sendfile"):
 				pycord.log("Sending file {}...".format(msg[10:]))
 				try:
-					await bot.send_file(discord.Object(id=channelId), msg[10:])
+					await bot.send_file(channelId, msg[10:])
 				
 				except Exception:
 					pycord.errorLog("An error occured while sending the file...")
@@ -157,18 +160,13 @@ async def on_ready():
 				username = msg[12:]
 				pycord.log("Username changed to {}".format(username))
 
-			#Import custom modules for use with /customsend
-			elif msg.startswith("/python.import"):
-				eval("import {}".format(msg[15:]))
-				pycord.log("Import attempted. Successful unless given an error.")
-
 			#Opens a text file and says it's contents in discord
 			elif msg.startswith("/sendtxt"):
 				try:
 					file = open(msg[9:], 'r')
 					pycord.log("Sending txt file...")
 					try:
-						await bot.send_message(discord.Object(id=channelId), """`[{}]` TXT FILE 
+						await bot.send_message(channelId, """`[{}]` TXT FILE 
 """.format(username) + file.read())
 					except Exception:
 						pycord.errorLog("An error occured while sending the message...")
@@ -181,7 +179,7 @@ async def on_ready():
 				if pycord.checkNumber(channelIdNew) == false: #Checks if channelIdNew is a number or not. If it fails, the below is executed.
 					pycord.errorLog("Could not change the id. Failed checkNumber check.")
 				else:
-					channelId = channelIdNew
+					channelId = discord.Object(id=channelIdNew)
 					pycord.log("Channel Id changed to {}".format(channelId))
 
 			#Lists all the commands
@@ -192,14 +190,14 @@ async def on_ready():
 			elif msg.startswith("/exit"):
 				print(exitMsg)
 				time.sleep(3)
-				await bot.send_message(discord.Object(id=channelId), "**{}** logged out of Pycord.".format(username))
+				await bot.send_message(channelId, "**{}** logged out of Pycord.".format(username))
 				await bot.close() #Logs out
 				break #Breaks the loop
 			
 			#Sends the shrug emote
 			elif msg.startswith("/shrug"):
 				try:
-					await bot.send_message(discord.Object(id=channelId), "`[{}]` ¯\_(ツ)_/¯".format(username))
+					await bot.send_message(channelId, "`[{}]` ¯\_(ツ)_/¯".format(username))
 				except Exception:
 					pycord.errorLog("An error occured while sending the message...")
 			
@@ -207,7 +205,7 @@ async def on_ready():
 			elif msg.startswith("/ping"):
 				try:
 					t1 = time.time()
-					await bot.send_typing(discord.Object(id=channelId))
+					await bot.send_typing(channelId)
 					t2 = time.time()
 					ping = (t2-t1)*1000
 					ping = round(ping, 2)
@@ -220,7 +218,7 @@ async def on_ready():
 			#If none of the requirements above are met, send the message
 			else:
 				try:
-					await bot.send_message(discord.Object(id=channelId), "`[{}]` {}".format(username, msg))
+					await bot.send_message(channelId, "`[{}]` {}".format(username, msg))
 				except Exception:
 					pycord.errorLog("An error occured while sending the message...")
 		
