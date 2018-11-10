@@ -125,7 +125,10 @@ async def on_ready():
 		print("---------------------------------------------------------------------")
 		######################################
 		
-		await bot.send_message(discord.Object(id=channelId), "**{}** logged into Pycord.".format(username))
+		try:
+			await bot.send_message(channelId, "**{}** logged into Pycord.".format(username))
+		except Exception:
+			pycord.errorLog("Could not send login message. Channel ID may be incorrect or inaccessable.")
 
 		while True : #The main loop
 			
