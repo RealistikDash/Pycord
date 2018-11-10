@@ -77,7 +77,7 @@ async def on_ready():
 			pycord.errorLog("Error loading channel id from file...")
 			while errorForId == 1: #A loop that is run while the user is entering their new channel id
 				channelId = input("Please enter the channel id: ")
-				if pycord.checkNumber(channelId) == false: #checknumber returns true if it is a number and false if it itn't
+				if pycord.checkNumber(channelId) == 'false': #checknumber returns true if it is a number and false if it itn't
 					pycord.errorLog("Invalid channel id!")
 				else:
 					errorForId = 0
