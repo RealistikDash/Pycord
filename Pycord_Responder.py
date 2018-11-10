@@ -64,9 +64,19 @@ tips = ["Is the Discord AIP blocked too? Try using repl.it and run Pycord there!
 
 bot = discord.Client()
 
+#Makes variables accessable in on_ready()
+bot.pycordUsername = username
+bot.channelId = channelId
+#########################################
+
 
 @bot.event
 async def on_ready():
+		try:
+			channelId = bot.channelId
+			username = bot.pycordUsername
+		except Exception:
+			pass
 		
 		###MISSING VARIABLE CHECK###
 		try:
@@ -125,10 +135,7 @@ async def on_ready():
 		print("---------------------------------------------------------------------")
 		######################################
 		
-		try:
-			await bot.send_message(channelId, "**{}** logged into Pycord.".format(username))
-		except Exception:
-			pycord.errorLog("Could not send login message. Channel ID may be incorrect or inaccessable.")
+		await bot.send_message(channelId, "**{}** logged into Pycord.".format(username))
 
 		while True : #The main loop
 			
