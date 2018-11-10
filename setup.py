@@ -1,10 +1,18 @@
 #Pycord Setup
 #Imports
+import os
 from Pycord import moduleManagement as mm
 try:
   from Pycord import pycord
 except ImportError:
   mm.installModule("colorama") # gets colorama for the pycord module
+  try:
+    os.system("cls")
+  except Exception:
+    try:
+      os.system("clear")
+    except Exception:
+      pass
   try:
     from Pycord import pycord
   except ImportError:
