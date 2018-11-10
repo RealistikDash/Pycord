@@ -2,6 +2,14 @@
 
 Pycord is a simple Discord client created to bypass the restrictions on Discord by network owners.
 
+Branch layout
+
+| Branch | Description |
+| --- | --- |
+| master | Most stable and most bug-free. Use it if you want a the most stable experiance. |
+| almost-done | More buggy but has newer features and is updated more. The code is decent. Use it for the superior features. |
+| wip | Was supposed to be for major changes but ended up being too bugy and the features were useless. Scrapped and will be deleted soon. Also the code was bad. Don't use it. |
+
 # Tested Python Versions
 
 Here is a list of tested Python versions.
