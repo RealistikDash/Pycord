@@ -61,6 +61,7 @@ The currently available commands are:
 | /customsend | Lets you choose the variables such as the channel id, message and any other attributes. |
 | /changeuser | Changes your Pycord username. |
 | /sendtxt | Sends the contents of a specified txt file. (2000 characters max) |
+| /embed | Sends an embed with given variables (Usage: /embed [title] - [content]) |
 | /changeid | Changes the channel id to which your messages are being sent to. |
 | /shrug | Sends a ¯\_(ツ)_/¯ |
 | /ping | Checks your connection to discord in ms (lower is better) |
