@@ -43,8 +43,9 @@ Discord Based Commands
 -/setgame		Sets your presence to a given input.
 -/sendfile		Sends a file with a given name.
 -/customsend		Lets you choose the variables such as the channel id, message and any other attributes.
--/changeuser		Changes your Pycord username.
+-/changeuser		Changes your Pycord username (does not edit settings.py and therefore is temporary).
 -/sendtxt		Sends the contents of a specified txt file.
+-/embed 		Sends an embed with your selected variables (Usage: /embed [title] - [content])
 -/changeid		Changes the channel id to which your messages are being sent to.
 -/shrug			Sends a ¯\_(ツ)_/¯
 -/ping			Measures the speed of your connection to discord (lower is better)
@@ -223,6 +224,21 @@ async def on_ready():
 					
 				except Exception:
 					pycord.errorLog("An error occured while sending the message...")
+			
+			#Embed command
+			elif msg.startswith("/embed"):
+				args = msg[7:]
+				try:
+					title, content = args.split("-")
+					content = content[1:]
+					embed = discord.Embed(title=title, description=content)
+					try:
+						await bot.send_message(channelId, embed=embed)
+					except Exception:
+						pycord.errorLog("Failed sending the message")
+				except Exception:
+					pycord.errorLog("Splitting failed. Required argumends might have not been met. Make sure to split the title and content with a dash and space like '- '.")
+				
 					
 
 			#If none of the requirements above are met, send the message
