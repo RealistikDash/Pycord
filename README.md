@@ -20,6 +20,10 @@ Here is a list of tested Python versions.
 
 2.7.10 - aiohttp requires 3.4.2 or higher
 
+# Pre installation notes!
+
+-Make sure your Python is added to path!
+
 # Initial setup:
 
 Setup:
