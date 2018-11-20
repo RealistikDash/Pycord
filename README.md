@@ -65,6 +65,7 @@ The currently available commands are:
 | /changeid | Changes the channel id to which your messages are being sent to. |
 | /shrug | Sends a ¯\_(ツ)_/¯ |
 | /ping | Checks your connection to discord in ms (lower is better) |
+| /clear | Clears the screen |
 | /exit | Logs off and exits Pycord |
 
 # Pycord Viewer Focus Mode
