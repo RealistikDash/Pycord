@@ -49,6 +49,7 @@ Discord Based Commands
 -/changeid		Changes the channel id to which your messages are being sent to.
 -/shrug			Sends a ¯\_(ツ)_/¯
 -/ping			Measures the speed of your connection to discord (lower is better)
+-/clear			Clears the screen
 -/exit			Exits Pycord"""
 
 
@@ -238,6 +239,16 @@ async def on_ready():
 						pycord.errorLog("Failed sending the message")
 				except Exception:
 					pycord.errorLog("Splitting failed. Required argumends might have not been met. Make sure to split the title and content with a dash and space like '- '.")
+			
+			#Clears the screen
+			elif msg.startswith("/clear"):
+				try:
+					os.system("cls") #windows variant
+				except Exception:
+					try:
+						os.system("clear") #linux variant
+					except Exception:
+						pycord.errorLog("Clear failed! Possibly unsupported os!")
 				
 					
 
