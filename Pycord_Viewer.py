@@ -28,6 +28,14 @@ except ImportError: #This is run if there is an error while importing
 				exit()
 ######################################
 
+#Sets the window title
+try:
+	os.system("Pycord Viewer")
+
+except Exception:
+	pass
+######################################
+
 #Welcome message
 if focusonchannel == "0":
 	welcome= """---------------------------------------------------------------------
