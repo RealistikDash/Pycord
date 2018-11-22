@@ -30,7 +30,7 @@ except ImportError: #This is run if there is an error while importing
 
 #Sets the window title
 try:
-	os.system("Pycord Viewer")
+	os.system("title Pycord Viewer")
 
 except Exception:
 	pass
