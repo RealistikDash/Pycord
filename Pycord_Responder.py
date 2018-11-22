@@ -38,7 +38,7 @@ except ImportError: #This is run if there is an error while importing
 				
 #Sets the window title
 try:
-	os.system("Pycord Responder")
+	os.system("title Pycord Responder")
 
 except Exception:
 	pass
