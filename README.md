@@ -8,7 +8,6 @@ Branch layout
 | --- | --- |
 | master | Most stable and most bug-free. Use it if you want a the most stable experiance. |
 | almost-done | More buggy but has newer features and is updated more. The code is decent. Use it for the superior features. |
-| wip | Was supposed to be for major changes but ended up being too bugy and the features were useless. Scrapped and will be deleted soon. Also the code was bad. Don't use it. |
 
 # Tested Python Versions
 
@@ -61,9 +60,11 @@ The currently available commands are:
 | /customsend | Lets you choose the variables such as the channel id, message and any other attributes. |
 | /changeuser | Changes your Pycord username. |
 | /sendtxt | Sends the contents of a specified txt file. (2000 characters max) |
+| /embed | Sends an embed with given variables (Usage: /embed [title] - [content]) |
 | /changeid | Changes the channel id to which your messages are being sent to. |
 | /shrug | Sends a ¯\_(ツ)_/¯ |
 | /ping | Checks your connection to discord in ms (lower is better) |
+| /clear | Clears the screen |
 | /exit | Logs off and exits Pycord |
 
 # Pycord Viewer Focus Mode
