@@ -24,7 +24,7 @@ Here is a list of tested Python versions.
 
 # Pre installation notes!
 
--Make sure your Python is added to path!
+-Make sure your Python is added to path! Folow [this](https://github.com/RealistikDash/Pycord/wiki/How-to-add-Python-to-path%3F-(Windows)) if you don't know how to.
 
 # Initial setup:
 
