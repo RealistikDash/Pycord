@@ -1,6 +1,8 @@
 #PyCord Viewer by RealistikDash
 print("Initialising Pycord Viewer")
 
+from Pycord import *
+
 #Required imports
 try:
 	import discord
