@@ -9,6 +9,7 @@ try:
 	import asyncio
 	import time
 	from settings import * #Imports variables you set in the setup
+	from Pycord import pycord #Imports main module
 
 except ImportError: #This is run if there is an error while importing
 	pycord.errorLog("There was an error while importing! Pycord cannot continue. Make sure you ran setup.py before launching Pycord")
