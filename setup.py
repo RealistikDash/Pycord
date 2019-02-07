@@ -10,7 +10,7 @@ except ImportError:
     os.system("cls")
   except Exception:
     try:
-      os.system("clear")
+      pycord.clear()
     except Exception:
       pass
   try:
