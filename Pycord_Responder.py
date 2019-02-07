@@ -37,11 +37,9 @@ except ImportError: #This is run if there is an error while importing
 				exit()
 				
 #Sets the window title
-try:
-	os.system("title Pycord Responder")
 
-except Exception:
-	pass
+pycord.title("Pycord Responder")
+
 ######################################
 
 ######################################
@@ -98,7 +96,7 @@ async def on_ready():
 			pycord.errorLog("Error loading channel id from file...")
 			while errorForId == 1: #A loop that is run while the user is entering their new channel id
 				channelId = input("Please enter the channel id: ")
-				if pycord.checkNumber(channelId) == 'false': #checknumber returns true if it is a number and false if it itn't
+				if pycord.checkNumber(channelId) == True: #checknumber returns true if it is a number and false if it itn't
 					pycord.errorLog("Invalid channel id!")
 				else:
 					errorForId = 0
@@ -251,13 +249,7 @@ async def on_ready():
 			
 			#Clears the screen
 			elif msg.startswith("/clear"):
-				try:
-					os.system("cls") #windows variant
-				except Exception:
-					try:
-						os.system("clear") #linux variant
-					except Exception:
-						pycord.errorLog("Clear failed! Possibly unsupported os!")
+				pycord.clear()
 				
 					
 
