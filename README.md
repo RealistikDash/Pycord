@@ -66,6 +66,10 @@ The currently available commands are:
 | /shrug | Sends a ¯\_(ツ)_/¯ |
 | /ping | Checks your connection to discord in ms (lower is better) |
 | /clear | Clears the screen |
+| /online | Sets status to Online |
+| /idle | Sets status to Idle |
+| /dnd | Sets status to Do Not Disturb |
+| /invisible | Sets status to Invisible/Offline |
 | /exit | Logs off and exits Pycord |
 
 # Pycord Viewer Focus Mode
