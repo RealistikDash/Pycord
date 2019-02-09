@@ -226,7 +226,7 @@ async def on_ready():
 				print(cmdlist)
 
 			#Exits PyCord
-			elif msg.startswith("/exit"):
+			elif msg == "/exit" or msg == "/quit":
 				print(exitMsg)
 				time.sleep(3)
 				await bot.send_message(channelId, "**{}** logged out of Pycord.".format(username))
