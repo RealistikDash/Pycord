@@ -215,7 +215,7 @@ async def on_ready():
 			#Change channel ID
 			elif msg.startswith("/changeid"):
 				channelIdNew = msg[10:]
-				if pycord.checkNumber(channelIdNew) == false: #Checks if channelIdNew is a number or not. If it fails, the below is executed.
+				if pycord.checkNumber(channelIdNew) == False: #Checks if channelIdNew is a number or not. If it fails, the below is executed.
 					pycord.errorLog("Could not change the id. Failed checkNumber check.")
 				else:
 					channelId = discord.Object(id=channelIdNew)
