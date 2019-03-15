@@ -1,3 +1,4 @@
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 # PyCord
 
 Pycord is a simple Discord client created to bypass the restrictions on Discord by network owners.
@@ -21,7 +22,7 @@ Here is a list of tested Python versions.
 
 # Pre installation notes!
 
--Make sure your Python is added to path!
+-Make sure your Python is added to path! Folow [this](https://github.com/RealistikDash/Pycord/wiki/How-to-add-Python-to-path%3F-(Windows)) if you don't know how to.
 
 # Initial setup:
 
@@ -65,6 +66,10 @@ The currently available commands are:
 | /shrug | Sends a ¯\_(ツ)_/¯ |
 | /ping | Checks your connection to discord in ms (lower is better) |
 | /clear | Clears the screen |
+| /online | Sets status to Online |
+| /idle | Sets status to Idle |
+| /dnd | Sets status to Do Not Disturb |
+| /invisible | Sets status to Invisible/Offline |
 | /exit | Logs off and exits Pycord |
 
 # Pycord Viewer Focus Mode

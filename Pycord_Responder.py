@@ -16,13 +16,13 @@ try: #Attempts to import
 	from Pycord import pycord
 	import os
 	from settings import * #Imports variables you set in the setup
-	
+
 except ImportError: #This is run if there is an error while importing
 	pycord.errorLog("There was an error while importing! Pycord cannot continue. Make sure you ran setup.py before launching Pycord")
 	print("")
 	runSetup = input("Do you want to run the setup now? (y/N)")
 	runSetup = runSetup.lower() #Turns runSetup into lower case letters
-	
+
 	if runSetup == "y":
 		try:
 			os.system("python setup.py")
@@ -35,6 +35,13 @@ except ImportError: #This is run if there is an error while importing
 				pycord.errorLog("There was an error while attempting to run the setup. Pycord cannot proceed.")
 				time.sleep(3)
 				exit()
+
+#Sets the window title
+
+pycord.title("Pycord Responder")
+
+######################################
+
 ######################################
 
 #Message list
@@ -50,6 +57,10 @@ Discord Based Commands
 -/shrug			Sends a ¯\_(ツ)_/¯
 -/ping			Measures the speed of your connection to discord (lower is better)
 -/clear			Clears the screen
+-/online		Sets status to Online
+-/idle			Sets status to Idle
+-/dnd			Sets status to Do Not Disturb
+-/invisible		Sets status to Invisible/Offline
 -/exit			Exits Pycord"""
 
 
@@ -64,12 +75,28 @@ The program will turn off in 3 seconds
 tips = ["Is the Discord AIP blocked too? Try using repl.it and run Pycord there!"]
 ######################################
 
-bot = discord.Client()
+bot = discord.Client() #defines Client
 
 #Makes variables accessable in on_ready()
 bot.pycordUsername = username
 bot.channelId = channelId
 #########################################
+
+async def actStatus(status):
+	"""Changes the status based on str given"""
+	if status == "online":
+		await bot.change_presence(status = discord.Status.online) #changes status to online
+
+	elif status == "away":
+		await bot.change_presence(status = discord.Status.idle) #changes status to away
+
+	elif status == "dnd":
+		await bot.change_presence(status = discord.Status.dnd)
+
+	elif status == "invisible":
+		await bot.change_presence(status = discord.Status.invisible)
+	else:
+		pycord.errorLog("actStatus(status): Status incorrect! This is a problem on the programmer's side")
 
 
 @bot.event
@@ -79,25 +106,25 @@ async def on_ready():
 			username = bot.pycordUsername
 		except Exception:
 			pass
-		
+
 		###MISSING VARIABLE CHECK###
 		try:
 			channelId = channelId #checks if the variable can be accessed
-			
+
 		except Exception:
 			errorForId = 1
 			pycord.errorLog("Error loading channel id from file...")
 			while errorForId == 1: #A loop that is run while the user is entering their new channel id
 				channelId = input("Please enter the channel id: ")
-				if pycord.checkNumber(channelId) == 'false': #checknumber returns true if it is a number and false if it itn't
+				if pycord.checkNumber(channelId) == True: #checknumber returns true if it is a number and false if it itn't
 					pycord.errorLog("Invalid channel id!")
 				else:
 					errorForId = 0
 					break
-			
+
 		try:
 			username = username #checks if the variable can be accessed
-				
+
 		except Exception:
 			pycord.errorLog("Error getting username from settings.py...")
 			usernameLoop = 1
@@ -110,11 +137,11 @@ async def on_ready():
 				else:
 					usernameLoop = 0
 					break
-					
+
 		channelId = discord.Object(id=channelId) #Makes the variable a discord object
-		
+
 		#####################################
-		
+
 		#Checks ping
 		t1 = time.time()
 		await bot.send_typing(channelId)
@@ -122,9 +149,9 @@ async def on_ready():
 		ping = (t2-t1)*1000
 		ping = round(ping, 2)
 		######################################
-		
+
 		pycord.log("Logged into {}".format(bot.user.name)) #Sets game
-		
+
 		#Welcome message
 		print("Welcome to Pycord {}!".format(username))
 		print(cmdlist)
@@ -136,12 +163,12 @@ async def on_ready():
 		print(random.choice(tips))
 		print("---------------------------------------------------------------------")
 		######################################
-		
+
 		await bot.send_message(channelId, "**{}** logged into Pycord.".format(username))
 
 		while True : #The main loop
-			
-			
+
+
 			msg = input("Pycord> ")
 			#Checks if the msg is empty
 			if msg == "":
@@ -158,7 +185,7 @@ async def on_ready():
 				pycord.log("Sending file {}...".format(msg[10:]))
 				try:
 					await bot.send_file(channelId, msg[10:])
-				
+
 				except Exception:
 					pycord.errorLog("An error occured while sending the file...")
 
@@ -178,17 +205,17 @@ async def on_ready():
 					file = open(msg[9:], 'r')
 					pycord.log("Sending txt file...")
 					try:
-						await bot.send_message(channelId, """`[{}]` TXT FILE 
+						await bot.send_message(channelId, """`[{}]` TXT FILE
 """.format(username) + file.read())
 					except Exception:
 						pycord.errorLog("An error occured while sending the message...")
 				except Exception:
 					pycord.errorLog("An error occured opening the file...")
-			
+
 			#Change channel ID
 			elif msg.startswith("/changeid"):
 				channelIdNew = msg[10:]
-				if pycord.checkNumber(channelIdNew) == false: #Checks if channelIdNew is a number or not. If it fails, the below is executed.
+				if pycord.checkNumber(channelIdNew) == False: #Checks if channelIdNew is a number or not. If it fails, the below is executed.
 					pycord.errorLog("Could not change the id. Failed checkNumber check.")
 				else:
 					channelId = discord.Object(id=channelIdNew)
@@ -199,20 +226,20 @@ async def on_ready():
 				print(cmdlist)
 
 			#Exits PyCord
-			elif msg.startswith("/exit"):
+			elif msg == "/exit" or msg == "/quit":
 				print(exitMsg)
 				time.sleep(3)
 				await bot.send_message(channelId, "**{}** logged out of Pycord.".format(username))
 				await bot.close() #Logs out
 				break #Breaks the loop
-			
+
 			#Sends the shrug emote
 			elif msg.startswith("/shrug"):
 				try:
 					await bot.send_message(channelId, "`[{}]` ¯\_(ツ)_/¯".format(username))
 				except Exception:
 					pycord.errorLog("An error occured while sending the message...")
-			
+
 			#A ping command
 			elif msg.startswith("/ping"):
 				try:
@@ -222,10 +249,10 @@ async def on_ready():
 					ping = (t2-t1)*1000
 					ping = round(ping, 2)
 					pycord.log("Your ping is {}ms".format(ping))
-					
+
 				except Exception:
 					pycord.errorLog("An error occured while sending the message...")
-			
+
 			#Embed command
 			elif msg.startswith("/embed"):
 				args = msg[7:]
@@ -239,18 +266,30 @@ async def on_ready():
 						pycord.errorLog("Failed sending the message")
 				except Exception:
 					pycord.errorLog("Splitting failed. Required argumends might have not been met. Make sure to split the title and content with a dash and space like '- '.")
-			
+
 			#Clears the screen
 			elif msg.startswith("/clear"):
-				try:
-					os.system("cls") #windows variant
-				except Exception:
-					try:
-						os.system("clear") #linux variant
-					except Exception:
-						pycord.errorLog("Clear failed! Possibly unsupported os!")
-				
-					
+				pycord.clear()
+
+			#sets status to online
+			elif msg == "/online":
+				await actStatus("online")
+				pycord.log("Status set to Online")
+
+			#sets status to away
+			elif msg == "/away" or msg == "/afk" or msg == "/idle":
+				await actStatus("away")
+				pycord.log("Status set to Away")
+
+			#sets status to dnd
+			elif msg == "/dnd":
+				await actStatus("dnd")
+				pycord.log("Status set to Do Not Disturb")
+
+			elif msg == "/offline" or msg == "/invisible":
+				await actStatus("invisible")
+				pycord.log("Status set to Invisible")
+
 
 			#If none of the requirements above are met, send the message
 			else:
@@ -258,7 +297,7 @@ async def on_ready():
 					await bot.send_message(channelId, "`[{}]` {}".format(username, msg))
 				except Exception:
 					pycord.errorLog("An error occured while sending the message...")
-		
+
 		pycord.log("Loop broken")
 
 try:
