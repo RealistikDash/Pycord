@@ -15,6 +15,13 @@ import time
 
 pycord.title("Pycord Setup")
 
+sampleDict = { #Sample dictionary to save
+  'botToken' : """""",
+  'channelId' : '',
+  'focusonchannel' : 0,
+  'username' : ""
+}
+
 def checkForInt(var):
   """Checks if the given var is a number"""
   try: #Tries to change var into int
@@ -51,12 +58,12 @@ def editFile():
       newFocusMode = 1
 
     file = open("settings.py","w+") #opens the file so it can be edited
-    settingsFile = """#These are the bot settings for Pycord. This script is not to be ran. Pycord will just read it and get the variables from here
-botToken = "{}"
-channelId = "{}"
-focusonchannel = {}
-username = "{}"
-  """.format(newToken, newChannelId, newFocusMode, newUsername)
+    sampleDict['botToken'] = newToken
+    sampleDict['channelId'] = newChannelId
+    sampleDict['focusonchannel'] = newFocusMode
+    sampleDict['username'] = newUsername
+
+    settingsFile = "#This is the Pycord Save file. This is where all your Pycord information is stored. This is not to be ran but rater edited.\ndetails = {}".format(sampleDict)
 
     try:
       file.write(settingsFile) #writes to the file
@@ -140,12 +147,12 @@ except ImportError: #except when you don't have it
     username = input("Enter your Pycord Responder username: ")
     file = open("settings.py","w+") #creates a file called settings.py that will store all your variables
 
-    settingsFile = """#These are the bot settings for Pycord. This script is not to be ran. Pycord will just read it and get the variables from here
-botToken = "{}"
-channelId = "{}"
-focusonchannel = {}
-username = "{}"
-  """.format(botToken, botChannelId, focusModeEnabled, username)
+    sampleDict['botToken'] = botToken
+    sampleDict['channelId'] = botChannelId
+    sampleDict['focusonchannel'] = focusModeEnabled
+    sampleDict['username'] = username
+
+    settingsFile = "#This is the Pycord Save file. This is where all your Pycord information is stored. This is not to be ran but rater edited.\ndetails = {}".format(sampleDict)
 
     pycord.log("Attempting to write settings to file...")
     file.write(settingsFile) #writes to the file
