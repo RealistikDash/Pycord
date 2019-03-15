@@ -78,7 +78,8 @@ tips = ["Is the Discord AIP blocked too? Try using repl.it and run Pycord there!
 bot = discord.Client() #defines Client
 
 #Makes variables accessable in on_ready()
-bot.details = details
+bot.pycordUsername = username
+bot.channelId = channelId
 #########################################
 
 async def actStatus(status):
@@ -101,8 +102,8 @@ async def actStatus(status):
 @bot.event
 async def on_ready():
 		try:
-			channelId = bot.details["channelId"]
-			username = bot.details["username"]
+			channelId = bot.channelId
+			username = bot.pycordUsername
 		except Exception:
 			pass
 
@@ -115,7 +116,7 @@ async def on_ready():
 			pycord.errorLog("Error loading channel id from file...")
 			while errorForId == 1: #A loop that is run while the user is entering their new channel id
 				channelId = input("Please enter the channel id: ")
-				if pycord.checkNumber(channelId) == False: #checknumber returns true if it is a number and false if it itn't
+				if pycord.checkNumber(channelId) == True: #checknumber returns true if it is a number and false if it itn't
 					pycord.errorLog("Invalid channel id!")
 				else:
 					errorForId = 0
@@ -300,8 +301,8 @@ async def on_ready():
 		pycord.log("Loop broken")
 
 try:
-	bot.run(details['botToken']) #Connects the bot.
+	bot.run(botToken) #Connects the bot.
 except Exception:
 	pycord.errorLog("Could not connect to Discord. Check your token. Login aborted.")
 	time.sleep(3)
-	exit()
+exit()
