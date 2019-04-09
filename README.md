@@ -70,6 +70,7 @@ The currently available commands are:
 | /idle | Sets status to Idle |
 | /dnd | Sets status to Do Not Disturb |
 | /invisible | Sets status to Invisible/Offline |
+| /userToggle | Toggles between your username being shown or not |
 | /exit | Logs off and exits Pycord |
 
 # Pycord Viewer Focus Mode
