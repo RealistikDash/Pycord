@@ -61,6 +61,7 @@ Discord Based Commands
 -/idle			Sets status to Idle
 -/dnd			Sets status to Do Not Disturb
 -/invisible		Sets status to Invisible/Offline
+-/userToggle	Toggles between your username being shown or not
 -/exit			Exits Pycord"""
 
 
@@ -72,13 +73,16 @@ The program will turn off in 3 seconds
 ######################################
 
 #Tips
-tips = ["Is the Discord AIP blocked too? Try using repl.it and run Pycord there!"]
+tips = ["Is the Discord AIP blocked too? Try using repl.it and run Pycord there!", "Pycord will automatically ignore all messages starting with / that are not commands. To send a message starting with /, put a dot before it like this: ./"]
 ######################################
 
 bot = discord.Client() #defines Client
 
 #Makes variables accessable in on_ready()
 bot.details = details
+
+#Default Values
+bot.showUsername = True
 #########################################
 
 async def actStatus(status):
@@ -172,6 +176,9 @@ async def on_ready():
 			#Checks if the msg is empty
 			if msg == "":
 				pycord.errorLog("Cannot send empty message.")
+			
+			if msg == " ":
+				pycord.errorLog("Cannot only send spaces!")
 
 			#Changes the presence
 			elif msg.startswith("/setgame"):
@@ -204,8 +211,10 @@ async def on_ready():
 					file = open(msg[9:], 'r')
 					pycord.log("Sending txt file...")
 					try:
-						await bot.send_message(channelId, """`[{}]` TXT FILE
-""".format(username) + file.read())
+						if bot.showUsername == True:
+							await bot.send_message(channelId, """`[{}]` `Text File`\n""".format(username) + file.read())
+						if bot.showUsername == False:
+							await bot.send_message(channelId, file.read())
 					except Exception:
 						pycord.errorLog("An error occured while sending the message...")
 				except Exception:
@@ -235,7 +244,10 @@ async def on_ready():
 			#Sends the shrug emote
 			elif msg.startswith("/shrug"):
 				try:
-					await bot.send_message(channelId, "`[{}]` ¯\_(ツ)_/¯".format(username))
+					if bot.showUsername == True:
+						await bot.send_message(channelId, "`[{}]` ¯\_(ツ)_/¯".format(username))
+					if bot.showUsername == False:
+						await bot.send_message(channelId, "¯\_(ツ)_/¯")
 				except Exception:
 					pycord.errorLog("An error occured while sending the message...")
 
@@ -285,15 +297,34 @@ async def on_ready():
 				await actStatus("dnd")
 				pycord.log("Status set to Do Not Disturb")
 
+			#sets status to offline
 			elif msg == "/offline" or msg == "/invisible":
 				await actStatus("invisible")
 				pycord.log("Status set to Invisible")
 
+			elif msg == "/userToggle":
+				if bot.showUsername == True:
+					bot.showUsername = False
+					pycord.log("Username hidden.")
+				
+				else:
+					bot.showUsername = True
+					pycord.log("Username will be shown.")
+
+			#final checks
+			elif msg.startswith("/"):
+				pass
+
 
 			#If none of the requirements above are met, send the message
 			else:
+				if msg.startswith("./"):
+					msg = msg[1:] #removes first character
 				try:
-					await bot.send_message(channelId, "`[{}]` {}".format(username, msg))
+					if bot.showUsername == True:
+						await bot.send_message(channelId, "`[{}]` {}".format(username, msg))
+					if bot.showUsername == False:
+						await bot.send_message(channelId, msg)
 				except Exception:
 					pycord.errorLog("An error occured while sending the message...")
 
