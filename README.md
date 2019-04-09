@@ -9,7 +9,6 @@ Branch layout
 | --- | --- |
 | master | Most stable and most bug-free. Use it if you want a the most stable experiance. |
 | almost-done | More buggy but has newer features and is updated more. The code is decent. Use it for the superior features. |
-| rewrite | A rework of key features (not a move to discord.py yet). Could be veeery buggy and messy. |
 
 # Tested Python Versions
 
