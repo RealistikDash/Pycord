@@ -19,6 +19,7 @@ sampleDict = { #Sample dictionary to save
   'botToken' : """""",
   'channelId' : '',
   'focusonchannel' : 0,
+  'useUsername' : "",
   'username' : ""
 }
 
@@ -41,6 +42,7 @@ def editFile():
     #Grabs all the variables
     newUsername = input("Input your new username: ")
     newToken = getpass(prompt='Input your new token (invisible): ', stream=None)
+    newUseUsername = input("Do your want your Pycord username to be visible in messages? (y/N)")
     newChannelId = input("Input your new channel id: ")
     #Debug purposes
     try:
@@ -56,11 +58,18 @@ def editFile():
 
     else:
       newFocusMode = 1
+    
+    if newUseUsername.lower() == "y":
+      useUsename = True
+    
+    else:
+      useUsename = False
 
     file = open("settings.py","w+") #opens the file so it can be edited
     sampleDict['botToken'] = newToken
     sampleDict['channelId'] = newChannelId
     sampleDict['focusonchannel'] = newFocusMode
+    sampleDict['useUsername'] = useUsename
     sampleDict['username'] = newUsername
 
     settingsFile = "#This is the Pycord Save file. This is where all your Pycord information is stored. This is not to be ran but rater edited.\ndetails = {}".format(sampleDict)
@@ -144,12 +153,22 @@ except ImportError: #except when you don't have it
       focusModeEnabled = 0
     else:
       focusModeEnabled = 1
+
+    useUsername = input("Do your want your Pycord username to be visible in messages? (y/N)")
     username = input("Enter your Pycord Responder username: ")
+    
+    if useUsername.lower() == "y":
+      useUsename = True
+    
+    else:
+      useUsename = False
+
     file = open("settings.py","w+") #creates a file called settings.py that will store all your variables
 
     sampleDict['botToken'] = botToken
     sampleDict['channelId'] = botChannelId
     sampleDict['focusonchannel'] = focusModeEnabled
+    sampleDict['useUsername'] = useUsename
     sampleDict['username'] = username
 
     settingsFile = "#This is the Pycord Save file. This is where all your Pycord information is stored. This is not to be ran but rater edited.\ndetails = {}".format(sampleDict)
