@@ -61,7 +61,7 @@ Discord Based Commands
 -/idle			Sets status to Idle
 -/dnd			Sets status to Do Not Disturb
 -/invisible		Sets status to Invisible/Offline
--/userToggle	Toggles between your username being shown or not
+-/userToggle		Toggles between your username being shown or not
 -/exit			Exits Pycord"""
 
 
@@ -82,7 +82,7 @@ bot = discord.Client() #defines Client
 bot.details = details
 
 #Default Values
-bot.showUsername = True
+
 #########################################
 
 async def actStatus(status):
@@ -237,6 +237,11 @@ async def on_ready():
 			elif msg == "/exit" or msg == "/quit":
 				print(exitMsg)
 				time.sleep(3)
+				bot.details = ""
+				try:
+					details = "" #i have no idea if this is going to work thats why im putting it in a try statement
+				except Exception:
+					pass
 				await bot.send_message(channelId, "**{}** logged out of Pycord.".format(username))
 				await bot.close() #Logs out
 				break #Breaks the loop
@@ -303,12 +308,12 @@ async def on_ready():
 				pycord.log("Status set to Invisible")
 
 			elif msg == "/userToggle":
-				if bot.showUsername == True:
-					bot.showUsername = False
+				if bot.details["useUsername"] == True:
+					bot.details["useUsername"] = False
 					pycord.log("Username hidden.")
 				
 				else:
-					bot.showUsername = True
+					bot.details["useUsername"] = True
 					pycord.log("Username will be shown.")
 
 			#final checks
@@ -321,9 +326,9 @@ async def on_ready():
 				if msg.startswith("./"):
 					msg = msg[1:] #removes first character
 				try:
-					if bot.showUsername == True:
+					if bot.details["useUsername"] == True:
 						await bot.send_message(channelId, "`[{}]` {}".format(username, msg))
-					if bot.showUsername == False:
+					if bot.details["useUsername"] == False:
 						await bot.send_message(channelId, msg)
 				except Exception:
 					pycord.errorLog("An error occured while sending the message...")
