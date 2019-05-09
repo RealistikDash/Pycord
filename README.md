@@ -8,7 +8,7 @@ Branch layout
 | Branch | Description |
 | --- | --- |
 | master | Most stable and most bug-free. Use it if you want a the most stable experiance. |
-| almost-done | More buggy but has newer features and is updated more. The code is decent. Use it for the superior features. |
+| almost-done | More buggy but has newer features and is updated more. The code is decent. Use it for the superior features (unless you see that the master branch has newer commits, that means I was too lazy to update the almost-done branch). |
 
 # Tested Python Versions
 
