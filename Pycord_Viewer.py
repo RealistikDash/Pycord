@@ -78,9 +78,9 @@ async def on_ready():
 async def on_message(message):
 	if details["focusonchannel"] == 1:
 		if message.channel.id == details["channelId"]:
-			print("[",message.author,"in",message.channel, "]",message.clean_content)
+			print("[{}]".format(message.author),message.clean_content)
 	else:
-		print("[",message.author,"in",message.channel, "]",message.clean_content)
+		print("[{} in {}]".format(message.author, message.channel),message.clean_content)
 
 
 
