@@ -30,6 +30,7 @@ LoadingBar(1, 5)
 configIsGood = ConfigIntegrityCheck(settings) #check if config is aay ok
 
 if configIsGood == False:
+    print("\n")
     ErrorMessage("The config file is incorrect/corrupted! Stopping...")
     time.sleep(2)
     exit()
@@ -37,11 +38,24 @@ if configIsGood == False:
 LoadingBar(2, 5)
 
 bot = discord.Client()
+bot.PycConfig = settings
 
 @bot.event
 async def on_ready():
     LoadingBar(5, 5)
-    print("Loading finished!\n Logged into Discord via", bot.user.name)
+    print(" Loading finished!\nLogged into Discord via", bot.user.name)
+    ###VARIABLES###
+    ch = bot.get_channel(bot.PycConfig['Messenger']["channelId"])
+    ######
+    while True:
+        action = input("Pycord> ")
+        if action == "" or action == " ":
+            print("Unable to send empty messages!")
+        else:
+            try:
+                await ch.send(action)
+            except Exception as e:
+                await AsyncErrorMessage("Mesage sending: {}".format(e))
 
 LoadingBar(3, 5)
 
@@ -50,3 +64,4 @@ try:
 except Exception as e:
     print("\n")
     ErrorMessage("LoginError: {}".format(e))
+    time.sleep(2)
