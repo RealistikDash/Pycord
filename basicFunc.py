@@ -22,6 +22,7 @@ def ConfigIntegrityCheck(config):
             coolVariable = config["token"]
             coolVariable = config["Messenger"]
             if type(coolVariable) is dict:
+                int(coolVariable["channelId"])
                 coolVariable = config["Viewer"]
                 if type(coolVariable) is dict:
                     return True
@@ -30,3 +31,7 @@ def ConfigIntegrityCheck(config):
             return False
         except Exception:
             return False
+
+def nn():
+    """Creates an empry line"""
+    print("\n")
