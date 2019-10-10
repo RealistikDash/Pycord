@@ -22,6 +22,7 @@ try:
     import discord
     from config import *
     from basicFunc import *
+    import threading
 except Exception as e:
     print("Critical error occured during imports of critical modules!")
 
@@ -30,7 +31,7 @@ LoadingBar(1, 5)
 configIsGood = ConfigIntegrityCheck(settings) #check if config is aay ok
 
 if configIsGood == False:
-    print("\n")
+    nn()
     ErrorMessage("The config file is incorrect/corrupted! Stopping...")
     time.sleep(2)
     exit()
@@ -58,10 +59,18 @@ async def on_ready():
                 await AsyncErrorMessage("Mesage sending: {}".format(e))
 
 LoadingBar(3, 5)
+def connect(botToken):
+    """Connects the bot. Made function for threading module"""
+    bot.run(botToken)
+
+LoadingBar(4, 5)
 
 try:
-    bot.run(settings["token"])
+    thread_list = []
+    thread = threading.Thread(target=connect, args = (settings["token"],))
+    thread_list.append(thread)
+    thread.start()
 except Exception as e:
-    print("\n")
+    nn()
     ErrorMessage("LoginError: {}".format(e))
     time.sleep(2)
