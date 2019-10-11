@@ -45,6 +45,12 @@ bot.PycConfig = settings
 async def on_ready():
     LoadingBar(5, 5)
     print(" Loading finished!\nLogged into Discord via", bot.user.name)
+    #sets the playing message
+    if bot.PycConfig["Messenger"]["defaultGame"] != False:
+        try:
+            await bot.change_presence(activity=discord.Game(name=bot.PycConfig["Messenger"]["defaultGame"]))
+        except Exception as e:
+            ErrorMessage("Game Changing: {}".format(e))
     ###VARIABLES###
     ch = bot.get_channel(bot.PycConfig['Messenger']["channelId"])
     ######
@@ -52,6 +58,22 @@ async def on_ready():
         action = input("Pycord> ")
         if action == "" or action == " ":
             print("Unable to send empty messages!")
+
+        elif action == "/exit":
+            await bot.close()
+            exit
+        
+        elif action.startswith("/file"):
+            try:
+                await ch.send(file=discord.File(action[6:]))
+            except Exception as e:
+                ErrorMessage("File sending: {}".format(e))
+        elif action.startswith("/game"):
+            game = action[6:]
+            if game == "False" or game == "false" or game == "off":
+                await bot.change_presence(activity=None)
+            else:
+                await bot.change_presence(activity=discord.Game(name=game))
         else:
             try:
                 await ch.send(action)
