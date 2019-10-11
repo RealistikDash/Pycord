@@ -1,8 +1,9 @@
 #This is the Pycord Rewrite config file. This is used by both Messenger and Viewer
 settings = {
-    "token" : "1243324",
+    "token" : "",
     "Messenger" : {
-        "channelId" : 123
+        "channelId" : 1234,
+        "defaultGame" : "Example Game" #set to bool of False to not have one
     },
     "Viewer" : {
 
