@@ -13,3 +13,7 @@ yet...
 -Config
 
 -Sending messeges!
+
+-Sending files
+
+-Changing game status
