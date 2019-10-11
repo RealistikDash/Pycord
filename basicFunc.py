@@ -23,6 +23,7 @@ def ConfigIntegrityCheck(config):
             coolVariable = config["Messenger"]
             if type(coolVariable) is dict:
                 int(coolVariable["channelId"])
+                coolVariable["defaultGame"] = coolVariable["defaultGame"]
                 coolVariable = config["Viewer"]
                 if type(coolVariable) is dict:
                     return True
