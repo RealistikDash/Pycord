@@ -24,7 +24,9 @@ try:
     from basicFunc import *
     import threading
 except Exception as e:
-    print("Critical error occured during imports of critical modules!")
+    print("\033[91m\nCritical error occured during imports of critical modules!\n{}\033[0m".format(e))
+    time.sleep(4)
+    exit()
 
 LoadingBar(1, 5)
 
@@ -38,8 +40,17 @@ if configIsGood == False:
 
 LoadingBar(2, 5)
 
+ListOfCommands = """-------------------------------------
+The list of available commands is:
+{}/help{}           Shows this message
+{}/file <path>{}    Sends a file with a given path  
+{}/game <text>{}    Sets a custom playing presence (use off for none)
+{}/exit{}           Logs out and quits Pycord
+-------------------------------------""".format(colour.BOLD, colour.NORMAL, colour.BOLD, colour.NORMAL, colour.BOLD, colour.NORMAL, colour.BOLD, colour.NORMAL, )
+
 bot = discord.Client()
 bot.PycConfig = settings
+bot.PycConfig["commands"] = ListOfCommands
 
 @bot.event
 async def on_ready():
@@ -54,6 +65,9 @@ async def on_ready():
     ###VARIABLES###
     ch = bot.get_channel(bot.PycConfig['Messenger']["channelId"])
     ######
+
+    print(bot.PycConfig["commands"])
+
     while True:
         action = input("Pycord> ")
         if action == "" or action == " ":
@@ -83,7 +97,11 @@ async def on_ready():
 LoadingBar(3, 5)
 def connect(botToken):
     """Connects the bot. Made function for threading module"""
-    bot.run(botToken)
+    try:
+        bot.run(botToken)
+    except Exception as e:
+        ErrorMessage("Login : {}".format(e))
+        time.sleep(2)
 
 LoadingBar(4, 5)
 
