@@ -1,18 +1,6 @@
 print("Loading Pycord Messenge...")
 print("Please note that this is a veeeery early version and might be buggy if it works at all.")
-import sys #loadingbar requirement
-
-#THE loading bar
-def LoadingBar(value, endvalue, bar_length=20):
-    """Loading bar cool right!"""
-
-    percent = float(value) / endvalue #makes it percentage certified
-    arrow = '-' * int(round(percent * bar_length)-1) + '>'
-    spaces = ' ' * (bar_length - len(arrow))
-
-    sys.stdout.write("\rPercent: [{0}] {1}%".format(arrow + spaces, int(round(percent * 100))))
-    sys.stdout.flush()
-
+from basicFunc import *
 LoadingBar(0, 5)
 
 try:
@@ -21,7 +9,6 @@ try:
     from discord.ext import commands
     import discord
     from config import *
-    from basicFunc import *
     import threading
 except Exception as e:
     print("\033[91m\nCritical error occured during imports of critical modules!\n{}\033[0m".format(e))
