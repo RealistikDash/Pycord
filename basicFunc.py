@@ -4,6 +4,7 @@ import asyncio
 import platform
 from config import *
 import sys
+from datetime import datetime
 
 #THE loading bar
 def LoadingBar(value, endvalue, bar_length=20):
@@ -70,6 +71,11 @@ def ConfigIntegrityCheck(config):
                 coolVariable["defaultGame"] = coolVariable["defaultGame"]
                 coolVariable = config["Viewer"]
                 if type(coolVariable) is dict:
+                    Viewer = config["Viewer"]
+                    int(Viewer["ViewAll"])
+                    for x in Viewer["ChannelWhitelist"]:
+                        int(x)
+                    int(Viewer["TimeFormat"])
                     return True
                 else:
                     return False
@@ -80,3 +86,23 @@ def ConfigIntegrityCheck(config):
 def nn():
     """Creates an empry line"""
     print("\n")
+
+def TimeFormat(FormatNr, Message):
+    """Responsible for putting a time in front of the msg"""
+    if TimeFormat == 0:
+        return Message
+
+    elif FormatNr == 1:
+        Time = datetime.now().strftime('%H:%M:%S')
+        return "[{}] {}".format(Time, Message)
+
+    elif FormatNr == 2:
+        Time = datetime.now().strftime('%H:%M')
+        return "[{}] {}".format(Time, Message)
+    
+    elif FormatNr == 3:
+        Time = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+        return "[{}] {}".format(Time, Message)
+
+    else:
+        return Message
