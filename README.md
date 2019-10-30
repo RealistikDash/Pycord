@@ -1,19 +1,19 @@
 # Pycord
-Just when discord is blocked.
+The simple kinda-discord client
+![alt text](https://i.ussr.online/5db8da39579279.59374087-Pycord.png)
 
 # What is this?
-This is a rewrite of pycord into new versions of discord.py. This is still in early development so dont expect it to be bug free/fully working....
+This is a rewrite of Pycord on the new Discord.py rewrite. It's aim is not only to move onto a new version of Discord.py but  to also move on from the caviates that plagued the previous versions of Pycord such as the try spam, lots of untested code and my rather limited knowledge of Python at the beginning of the project
 
-yet...
+# Use examples of Pycord
 
-# So what works?
+This project began when my school blocked Discord. Because of this, I made a Discord message sender and viewer that can be easily ran on something like a VPS or repl.it (which is why it is console based).
 
--Logging in
+With Pycord, you are able to send and recieve messages through a bot (user accounts might be a possibility **soon**)
 
--Config
+# Compatibility
 
--Sending messeges!
-
--Sending files
-
--Changing game status
+| System  | Python | Discord.py | Status |
+| ------------- | ------------- | ------------- | ------------- |
+| Windows 10  | 3.7.4  | 1.2.3  | Works!  |
+| Repl.it  | 3.7.4  | 1.2.3  | set_wakeup_fd only works in main thread |
