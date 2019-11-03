@@ -16,4 +16,4 @@ With Pycord, you are able to send and recieve messages through a bot (user accou
 | System  | Python | Discord.py | Status |
 | ------------- | ------------- | ------------- | ------------- |
 | Windows 10  | 3.7.4  | 1.2.3  | Works!  |
-| Repl.it  | 3.7.4  | 1.2.3  | set_wakeup_fd only works in main thread |
+| Repl.it (Linux) | 3.7.4  | 1.2.3  | Inactivity Crashes |
