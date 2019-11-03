@@ -1,4 +1,4 @@
-print("Loading Pycord Messenge...")
+print("Loading Pycord Messenger...")
 print("Please note that this is a veeeery early version and might be buggy if it works at all.")
 from basicFunc import *
 LoadingBar(0, 5)
@@ -9,6 +9,7 @@ try:
     from discord.ext import commands
     import discord
     from config import *
+    import platform
     import threading
 except Exception as e:
     print("\033[91m\nCritical error occured during imports of critical modules!\n{}\033[0m".format(e))
@@ -93,10 +94,13 @@ def connect(botToken):
 LoadingBar(4, 5)
 
 try:
-    thread_list = []
-    thread = threading.Thread(target=connect, args = (settings["token"],))
-    thread_list.append(thread)
-    thread.start()
+    if platform.system() == "Linux":
+        bot.run(settings["token"]) #so the windows solution doesnt work on linux because aiohttp so this
+    else:
+        thread_list = []
+        thread = threading.Thread(target=connect, args = (settings["token"],))
+        thread_list.append(thread)
+        thread.start()
 except Exception as e:
     nn()
     ErrorMessage("LoginError: {}".format(e))
