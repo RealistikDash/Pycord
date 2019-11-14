@@ -1,5 +1,5 @@
 print("Loading Pycord Messenger...")
-print("Please note that this is a veeeery early version and might be buggy if it works at all.")
+print("This is still a work in progress so it shall not represent the final product.")
 from basicFunc import *
 LoadingBar(0, 5)
 
@@ -23,7 +23,7 @@ configIsGood = ConfigIntegrityCheck(settings) #check if config is aay ok
 
 if configIsGood == False:
     nn()
-    ErrorMessage("The config file is incorrect/corrupted! Stopping...")
+    ErrorMessage("Failed verifying config file! Make sure it exists and it matches the newest version available on GitHub")
     time.sleep(2)
     exit()
 
