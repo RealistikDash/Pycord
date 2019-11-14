@@ -8,13 +8,14 @@ try:
     import asyncio
     from discord.ext import commands
     import discord
-    from config import *
     import platform
     import threading
 except Exception as e:
     print("\033[91m\nCritical error occured during imports of critical modules!\n{}\033[0m".format(e))
     time.sleep(4)
     exit()
+
+settings = JsonOpen()
 
 LoadingBar(1, 5)
 
