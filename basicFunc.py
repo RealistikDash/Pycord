@@ -2,9 +2,12 @@
 import time
 import asyncio
 import platform
-from config import *
 import sys
 from datetime import datetime
+import json
+
+with open('config.json') as json_file:
+    settings = json.load(json_file)
 
 #THE loading bar
 def LoadingBar(value, endvalue, bar_length=20):
@@ -106,3 +109,9 @@ def TimeFormat(FormatNr, Message):
 
     else:
         return Message
+
+def JsonOpen():
+    """Opens the json settings file and converts to dict"""
+    with open('config.json') as json_file:
+        data = json.load(json_file)
+        return data
