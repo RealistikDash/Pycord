@@ -19,7 +19,7 @@ RealistikCoolest = True #Take that drago
 ConfigAyOk = ConfigIntegrityCheck(bot.CoNfIgUrAtIoN)
 
 if ConfigAyOk == False:
-    ErrorMessage("Config : Corrupt Config")
+    ErrorMessage("Failed verifying config file! Make sure it exists and it matches the newest version available on GitHub")
 
 LoadingBar(2, 5)
 
