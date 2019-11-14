@@ -4,7 +4,6 @@ from basicFunc import *
 LoadingBar(0, 5)
 
 try:
-    from config import *
     from discord.ext import commands
     import discord
 
@@ -13,6 +12,7 @@ except Exception as e:
 
 LoadingBar(1, 5)
 
+settings = JsonOpen()
 bot = discord.Client()
 bot.CoNfIgUrAtIoN = settings
 RealistikCoolest = True #Take that drago
