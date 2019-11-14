@@ -1,0 +1,13 @@
+{
+    "token" : "sampletoken",
+    "ExperimantalMode" : 0,
+    "Messenger" : {
+        "channelId" : 458748688504848396,
+        "defaultGame" : "Example Game"
+    },
+    "Viewer" : {
+        "ViewAll" : 0,
+        "ChannelWhitelist" : [123456789, 123456789],
+        "TimeFormat" : 1
+    }
+}
