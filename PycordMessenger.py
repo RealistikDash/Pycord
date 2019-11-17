@@ -58,6 +58,8 @@ async def on_ready():
     ch = bot.get_channel(bot.PycConfig['Messenger']["channelId"])
     ######
 
+    Contributors()
+
     print(bot.PycConfig["commands"])
 
     while True:
