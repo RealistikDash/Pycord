@@ -1,6 +1,6 @@
-print("Loading Pycord Messenger...")
-print("This is still a work in progress so it shall not represent the final product.")
 from basicFunc import *
+print(LText.StartupLoading)
+print(LText.BetaNotice)
 LoadingBar(0, 5)
 
 try:
@@ -11,7 +11,7 @@ try:
     import platform
     import threading
 except Exception as e:
-    print("\033[91m\nCritical error occured during imports of critical modules!\n{}\033[0m".format(e))
+    print(LText.ModuleError)
     time.sleep(4)
     exit()
 
@@ -23,19 +23,22 @@ configIsGood = ConfigIntegrityCheck(settings) #check if config is aay ok
 
 if configIsGood == False:
     nn()
-    ErrorMessage("Failed verifying config file! Make sure it exists and it matches the newest version available on GitHub")
+    try:
+        ErrorMessage(LText.ConfigInvalid)
+    except Exception:
+        print("Failed verifying config file! Make sure it exists and it matches the newest version available on GitHub") #in case the lang part doesnt work
     time.sleep(2)
     exit()
 
 LoadingBar(2, 5)
 
 ListOfCommands = """-------------------------------------
-The list of available commands is:
-{}/help{}           Shows this message
-{}/file <path>{}    Sends a file with a given path  
-{}/game <text>{}    Sets a custom playing presence (use off for none)
-{}/exit{}           Logs out and quits Pycord
--------------------------------------""".format(colour.BOLD, colour.NORMAL, colour.BOLD, colour.NORMAL, colour.BOLD, colour.NORMAL, colour.BOLD, colour.NORMAL, )
+{}:
+/help           {}
+/file <path>    {}  
+/game <text>    {}
+/exit           {}
+-------------------------------------""".format(LText.CommandIntro, LText.HelpExplain, LText.FileExplain, LText.GameExplain, LText.ExitExplain)
 
 bot = discord.Client()
 bot.PycConfig = settings
@@ -44,13 +47,13 @@ bot.PycConfig["commands"] = ListOfCommands
 @bot.event
 async def on_ready():
     LoadingBar(5, 5)
-    print(" Loading finished!\nLogged into Discord via", bot.user.name)
+    print(LText.LoadingDone, bot.user.name)
     #sets the playing message
     if bot.PycConfig["Messenger"]["defaultGame"] != False:
         try:
             await bot.change_presence(activity=discord.Game(name=bot.PycConfig["Messenger"]["defaultGame"]))
         except Exception as e:
-            ErrorMessage("Game Changing: {}".format(e))
+            ErrorMessage(LText.GameChangingError.format(e))
     ###VARIABLES###
     ch = bot.get_channel(bot.PycConfig['Messenger']["channelId"])
     ######
@@ -60,7 +63,7 @@ async def on_ready():
     while True:
         action = input("Pycord> ")
         if action == "" or action == " ":
-            print("Unable to send empty messages!")
+            print(LText.EmptyMessageError)
 
         elif action == "/exit":
             await bot.close()
@@ -70,7 +73,7 @@ async def on_ready():
             try:
                 await ch.send(file=discord.File(action[6:]))
             except Exception as e:
-                ErrorMessage("File sending: {}".format(e))
+                ErrorMessage(LText.FileSendingError.format(e))
         elif action.startswith("/game"):
             game = action[6:]
             if game == "False" or game == "false" or game == "off":
@@ -81,7 +84,7 @@ async def on_ready():
             try:
                 await ch.send(action)
             except Exception as e:
-                await AsyncErrorMessage("Mesage sending: {}".format(e))
+                await AsyncErrorMessage(LText.MessageSendingError.format(e))
 
 LoadingBar(3, 5)
 def connect(botToken):
@@ -89,7 +92,7 @@ def connect(botToken):
     try:
         bot.run(botToken)
     except Exception as e:
-        ErrorMessage("Login : {}".format(e))
+        ErrorMessage(LText.LoginError.format(e))
         time.sleep(2)
 
 LoadingBar(4, 5)
@@ -104,5 +107,5 @@ try:
         thread.start()
 except Exception as e:
     nn()
-    ErrorMessage("LoginError: {}".format(e))
+    ErrorMessage(LText.LoginError.format(e))
     time.sleep(2)
