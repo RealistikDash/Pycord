@@ -1,5 +1,5 @@
 from basicFunc import *
-print(LText.StartupLoading)
+print(LText.StartupLoadingViewer)
 print(LText.BetaNotice)
 LoadingBar(0, 5)
 
@@ -34,6 +34,7 @@ LoadingBar(2, 5)
 async def on_ready():
     LoadingBar(5, 5)
     print(LText.LoadingDone, bot.user.name)
+    Contributors()
 
 LoadingBar(3, 5)
 
