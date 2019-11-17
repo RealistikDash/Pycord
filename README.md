@@ -35,7 +35,7 @@ With Pycord, you are able to send and recieve messages through a bot (user accou
 
 # Configuration
 
-This section's aim is to explain each variable of the config.json file.
+This section's aim is to explain each variable of the config.json file. Creating this file is now taken care of by the config maker but if you want to manually edit it, here's how.
 
 ```json
 {
