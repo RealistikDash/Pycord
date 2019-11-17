@@ -11,6 +11,14 @@ Pycord Windows executables are currently available to download [here!](https://g
 
 To get it to successfully launch, you'll need to download the latest config.json, edit it and done! No Python required.
 
+# Contributors
+
+| Person  | Contribution |
+| ------------- | ------------- |
+| RealistikDash  | Programmig, Polish traslation  |
+| Dragoofficial | French translation  |
+| TheRealCed | German translation  |
+
 # Use examples of Pycord
 
 This project began when my school blocked Discord. Because of this, I made a Discord message sender and viewer that can be easily ran on something like a VPS or repl.it (which is why it is console based).
