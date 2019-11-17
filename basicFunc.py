@@ -68,6 +68,7 @@ def ConfigIntegrityCheck(config):
     if type(config) is dict:
         try:
             #only real way of trying i know
+            coolVariable = config["lang"]
             coolVariable = config["token"]
             coolVariable = config["ExperimantalMode"]
             coolVariable = config["Messenger"]
