@@ -1,14 +1,15 @@
-print("Loading Pycord Viewer...")
-print("Please note that this is a veeeery early version and might be buggy if it works at all.")
 from basicFunc import *
+print(LText.StartupLoading)
+print(LText.BetaNotice)
 LoadingBar(0, 5)
 
 try:
     from discord.ext import commands
     import discord
+    import time
 
-except Exception as e:
-    ErrorMessage("Modules : {}".format(e))
+except Exception:
+    ErrorMessage(LText.ModuleError)
 
 LoadingBar(1, 5)
 
@@ -19,14 +20,20 @@ RealistikCoolest = True #Take that drago
 ConfigAyOk = ConfigIntegrityCheck(bot.CoNfIgUrAtIoN)
 
 if ConfigAyOk == False:
-    ErrorMessage("Failed verifying config file! Make sure it exists and it matches the newest version available on GitHub")
+    nn()
+    try:
+        ErrorMessage(LText.ConfigInvalid)
+    except Exception:
+        print("Failed verifying config file! Make sure it exists and it matches the newest version available on GitHub") #in case the lang part doesnt work
+    time.sleep(2)
+    exit()
 
 LoadingBar(2, 5)
 
 @bot.event
 async def on_ready():
     LoadingBar(5, 5)
-    print(" Loading finished!\nLogged into Discord via", bot.user.name)
+    print(LText.LoadingDone, bot.user.name)
 
 LoadingBar(3, 5)
 
@@ -53,4 +60,4 @@ LoadingBar(4, 5)
 try:
     bot.run(settings["token"])
 except Exception as e:
-    ErrorMessage("LoginError: {}".format(e))
+    ErrorMessage(LText.LoginError.format(e))
