@@ -5,9 +5,15 @@ import platform
 import sys
 from datetime import datetime
 import json
-
-with open('config.json') as json_file:
-    settings = json.load(json_file)
+try:
+    with open('config.json') as json_file:
+        settings = json.load(json_file)
+except Exception as e:
+    TheError = {
+        "status" : "Error",
+        "error" : e
+    }
+    settings = TheError
 
 #THE loading bar
 def LoadingBar(value, endvalue, bar_length=20):
@@ -24,6 +30,10 @@ class colour:
     #All this mess is because they dont show well at all on some systems. This is a basic estimate of what system this will work on
     PermittedOS = ["Linux", "Darwin"]
     CurrentOS = platform.system()
+    try:
+        settings["ExperimantalMode"] = settings["ExperimantalMode"]
+    except Exception:
+        settings["ExperimantalMode"] = 0
     if CurrentOS in PermittedOS or settings["ExperimantalMode"] == 1:
         PURPLE = "\033[95m"
         CYAN = "\033[96m"
@@ -52,14 +62,6 @@ class colour:
 async def DateFormat(messageFormat, message):
     """Adds date etc to the line. Currently reserved for later"""
     return
-
-def ErrorMessage(message):
-    """Template for error messages (not finished)"""
-    print("{}An error has occured with Pycord!\nError: {}{}".format(colour.YELLOW, message, colour.NORMAL))
-
-async def AsyncErrorMessage(message):
-    """Template for error messages. But guess what? It's asyncronous (not finished)"""
-    print("{}An error has occured with Pycord!\nError: {}{}".format(colour.YELLOW, message, colour.NORMAL))
 
 def ConfigIntegrityCheck(config):
     """Checks the integrity of the config and whether or not it will crash Pycord"""
@@ -112,6 +114,54 @@ def TimeFormat(FormatNr, Message):
 
 def JsonOpen():
     """Opens the json settings file and converts to dict"""
-    with open('config.json') as json_file:
-        data = json.load(json_file)
-        return data
+    try:
+        with open('config.json') as json_file:
+            data = json.load(json_file)
+    except Exception as e:
+        TheError = {
+            "status" : "Error",
+            "error" : e
+        }
+        data = TheError
+    return data
+
+class LText:
+    """The multilang class."""
+    if settings["lang"].lower() == "gb":
+        #English Commands
+        CommandIntro = "The list of available commands is"
+        HelpExplain = "Shows this message"
+        FileExplain = "Sends a file located at a given path"
+        GameExplain = "Sets a custom playing presence (use off for none)"
+        ExitExplain = "Logs out and quits Pycord"
+
+        StartupLoading = "Loading Pycord Messenger..."
+        BetaNotice = "This is still a work in progress so it shall not represent the final product."
+        
+        LoadingDone = " Loading finished!\nLogged into Discord via"
+        GameChangingError = "Game Changing: {}"
+        ModuleError = "\nCritical error occured during imports of critical modules!"
+        ConfigInvalid = "Failed verifying config file! Make sure it exists and it matches the newest version available on GitHub"
+        EmptyMessageError = "Unable to send empty messages!"
+        FileSendingError = "File sending: {}"
+        MessageSendingError = "Mesage sending: {}"
+        LoginError = "Login : {}"
+
+        ErrorMessage = "An error has occured with Pycord!\nError: {}"
+
+    if settings["lang"].lower() == "fr":
+        #French lang. copy and paste the above and translate
+        pass
+
+    if settings["lang"].lower() == "de":
+        #German lang. copy and paste the above and translate
+        pass
+
+
+def ErrorMessage(message):
+    """Template for error messages (not finished)"""
+    print(LText.ErrorMessage.format(message))
+
+async def AsyncErrorMessage(message):
+    """Template for error messages. But guess what? It's asyncronous (not finished)"""
+    print(LText.ErrorMessage.format(message))
