@@ -11,7 +11,8 @@ try:
 except Exception as e:
     TheError = {
         "status" : "Error",
-        "error" : e
+        "error" : e,
+        "lang" : "gb"
     }
     settings = TheError
 
