@@ -119,6 +119,7 @@ def JsonOpen():
     try:
         with open('config.json') as json_file:
             data = json.load(json_file)
+            data["status"] = "fine"
     except Exception as e:
         TheError = {
             "status" : "Error",
