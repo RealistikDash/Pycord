@@ -180,6 +180,7 @@ class LText:
         FileExplain = "Envoi un fichier situé à un chemin spécifique"
         GameExplain = "Définit un message de jeu personnalisé (utilise 'off' pour aucun)"
         ExitExplain = "Déconnecte et quitte Pycord"
+        SSExplain = "Prend une capture d'écran et l'envoie au salon Discord."
 
         StartupLoading = "Chargement de Pycord Messagerie..."
         StartupLoadingViewer = "Chargement de Pycord Visionneuse..."
@@ -196,6 +197,13 @@ class LText:
 
         ErrorMessage = "Une erreur est survenue avec Pycord!\nErreur: {}"
 
+        SSWarning = "Cette commande va prende une capture d'écran. Êtes-vous sure de vouloir faire ça?" #new 19/11/19
+        ActionCancel = "Action cancellée." #new 19/11/19
+        SSError = "Prise de capture d'écran : {}" #new 19/11/19
+        SSTimeStart = "Vous avez 4 secondes avant la capture d'écran. Go!" #new 19/11/19
+        ActionFinished = "Tâche terminée!" #new 19/11/19
+
+
         #Cotribution Table
         ContributionThanks = "Merci à tous ces personnes qui ont contribué à ce projet"
         RealistikContrib = "Codage, Traduction Polonaise"
@@ -208,6 +216,7 @@ class LText:
         FileExplain = "Sendet eine Datei, die sich an einem bestimmten Pfad befindet"
         GameExplain = "Setzt einen benutzerdefinierten Spiele Status (Benutze off für keinen)"
         ExitExplain = "Abmelden und das verlassen von Pycord"
+        SSExplain = "Takes a screenshot and sends it to the Discord channel." #new 19/11/19
 
         StartupLoading = "Laden des Pycord Messenger..."
         StartupLoadingViewer = "Laden des Pycord Viewer..."
@@ -224,6 +233,12 @@ class LText:
 
         ErrorMessage = "Ein Fehler ist mit Pycord aufgetreten!\nFehler: {}"
 
+        SSWarning = "This command will send a screenshot. Are you sure you want to do this?" #new 19/11/19
+        ActionCancel = "Action cancelled." #new 19/11/19
+        SSError = "Screenshot Taking : {}" #new 19/11/19
+        SSTimeStart = "You have 4 seconds until the screenshot. Go!" #new 19/11/19
+        ActionFinished = "Task finished!" #new 19/11/19
+
         #Cotribution Table
         ContributionThanks = "Danke an all die Leute die beim Projekt mit beigetragen haben"
         RealistikContrib = "Programmierung, Polnische Übersetzung"
@@ -237,6 +252,7 @@ class LText:
         FileExplain = "Wysyła plik zlokalizowany w danej ścieżce"
         GameExplain = "Ustawia wiadomość 'grania' na podaną przez użytkownika (ustaw na off aby wyłączyć)"
         ExitExplain = "Wylogowuje się z Pycord"
+        SSExplain = "Wykonuje zrzut ekranu i wysyła go do kanału Discord." #new 19/11/19
 
         StartupLoading = "Ładowanie Pycord Messenger..."
         BetaNotice = "Jest to wciąż praca w toku, więc nie będzie reprezentować produktu końcowego."
@@ -251,6 +267,12 @@ class LText:
         LoginError = "Logowanie się : {}"
 
         ErrorMessage = "Wystąpił błąd w Pycord!\nBłąd: {}"
+
+        SSWarning = "Ta komenda wyśle zrzut ekranu. Czy na pewno chcesz to zrobić?" #new 19/11/19
+        ActionCancel = "Akcja anulowana." #new 19/11/19
+        SSError = "Wykonywanie zrzutu ekranu : {}" #new 19/11/19
+        SSTimeStart = "Masz 4 sekundy do zrzutu ekranu." #new 19/11/19
+        ActionFinished = "Zadanie zakończone!" #new 19/11/19
 
         #Cotribution Table
         ContributionThanks = "Dziękuję wszystkim osobom, które odegrały rolę w tym projekcie"
