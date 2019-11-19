@@ -5,6 +5,9 @@ import platform
 import sys
 from datetime import datetime
 import json
+import string
+import random
+
 try:
     with open('config.json') as json_file:
         settings = json.load(json_file)
@@ -114,6 +117,11 @@ def TimeFormat(FormatNr, Message):
     else:
         return Message
 
+def StringGen(stringLength):
+    """Generate a random string of fixed length """
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
+
 def JsonOpen():
     """Opens the json settings file and converts to dict"""
     try:
@@ -137,6 +145,7 @@ class LText:
         FileExplain = "Sends a file located at a given path"
         GameExplain = "Sets a custom playing presence (use off for none)"
         ExitExplain = "Logs out and quits Pycord"
+        SSExplain = "Takes a screenshot and sends it to the Discord channel." #new 19/11/19
 
         StartupLoading = "Loading Pycord Messenger..."
         StartupLoadingViewer = "Loading Pycord Viewer..."
@@ -152,6 +161,12 @@ class LText:
         LoginError = "Login : {}"
 
         ErrorMessage = "An error has occured with Pycord!\nError: {}"
+
+        SSWarning = "This command will send a screenshot. Are you sure you want to do this?" #new 19/11/19
+        ActionCancel = "Action cancelled." #new 19/11/19
+        SSError = "Screenshot Taking : {}" #new 19/11/19
+        SSTimeStart = "You have 4 seconds until the screenshot. Go!" #new 19/11/19
+        ActionFinished = "Task finished!" #new 19/11/19
 
         #Cotribution Table
         ContributionThanks = "Thanks to all these people who contributed to the project"

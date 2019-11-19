@@ -10,6 +10,8 @@ try:
     import discord
     import platform
     import threading
+    import pyautogui
+    import os
 except Exception as e:
     print(LText.ModuleError)
     time.sleep(4)
@@ -37,8 +39,9 @@ ListOfCommands = """-------------------------------------
 /help           {}
 /file <path>    {}  
 /game <text>    {}
+/screenshot     {}
 /exit           {}
--------------------------------------""".format(LText.CommandIntro, LText.HelpExplain, LText.FileExplain, LText.GameExplain, LText.ExitExplain)
+-------------------------------------""".format(LText.CommandIntro, LText.HelpExplain, LText.FileExplain, LText.GameExplain, LText.SSExplain, LText.ExitExplain)
 
 bot = discord.Client()
 bot.PycConfig = settings
@@ -82,6 +85,40 @@ async def on_ready():
                 await bot.change_presence(activity=None)
             else:
                 await bot.change_presence(activity=discord.Game(name=game))
+        elif action == "/screenshot":
+            print(LText.SSWarning)
+            SSAgree = input("[y/N] > ")
+            if SSAgree.lower() == "y":
+                SS_Filename = StringGen(20)
+                SS_Filename = SS_Filename + ".png"
+                print(LText.SSTimeStart)
+                await asyncio.sleep(4)
+                try:
+                    #there are things that could go wrong here such as permission errors so will do this
+                    SS_Screenshot = pyautogui.screenshot()
+                    SS_Screenshot.save(SS_Filename)
+                    SS_Success = True
+                except Exception as e:
+                    ErrorMessage(LText.SSError.format(e))
+                    SS_Success = False
+                
+                try:
+                    #the sending section where things can also go wrong
+                    if SS_Success: #Will only execute if it worked
+                        await ch.send(file=discord.File(SS_Filename))
+                except Exception as e:
+                    ErrorMessage(LText.FileSendingError.format(e))
+                
+                #Make file delete itself
+                if platform.system() == "Windows":
+                    os.system("del " + SS_Filename)
+                if platform.system() == "Linux":
+                    os.system("rm " + SS_Filename)
+
+                print(LText.ActionFinished)
+
+            else:
+                print(LText.ActionCancel)
         else:
             try:
                 await ch.send(action)

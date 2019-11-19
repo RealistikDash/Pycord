@@ -1,2 +1,3 @@
 setuptools
 discord.py
+pyautogui
